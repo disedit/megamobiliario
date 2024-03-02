@@ -1,0 +1,23 @@
+html {
+  scroll-padding-top: var(--navbar-safe-area);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--base-font);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color .25s ease;
+  font-size: var(--text-md);
+}
+
+a {
+  color: var(--primary);
+
+  &:focus-visible {
+    position: relative;
+    outline: 3px var(--black) solid;
+    z-index: 10;
+  }
+}

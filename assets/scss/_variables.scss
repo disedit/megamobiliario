@@ -1,0 +1,27 @@
+/* Colors */
+$primary: red;
+$black: black;
+$beige: #E9D5CA;
+
+/* Fonts */
+
+/* Text sizing */
+$text-sm: .95rem;
+$text-base: 1rem;
+$text-md: 1.1rem;
+$text-lg: 1.25rem;
+$text-xl: 1.4rem;
+$text-2xl: 2rem;
+
+/* Media breakpoints */
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1250px,
+  xxl: 1540px,
+  sup: 2200px
+);
+
+/* Spacing */
+$navbar-safe-area: 4rem;
