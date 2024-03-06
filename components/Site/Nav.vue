@@ -23,7 +23,8 @@ const localePath = useLocalePath()
   <header>
     <div>
       <NuxtLink to="/">
-        <h1>Megamobiliario</h1>
+        <h1 class="visually-hidden">Megamobiliario</h1>
+        <SiteLogo />
       </NuxtLink>
       <nav v-if="headerMenu">
         <ul>

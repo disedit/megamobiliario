@@ -1,12 +1,19 @@
 :root {
-  --primary: #{$primary};
   --navbar-safe-area: #{$navbar-safe-area};
+  --font-base: #{$font-base};
+  --font-headline: #{$font-headline};
   --text-sm: #{$text-sm};
   --text-base: #{$text-base};
   --text-md: #{$text-md};
   --text-lg: #{$text-lg};
   --text-xl: #{$text-xl};
   --text-2xl: #{$text-2xl};
+  --black: #{$black};
+  --blue: #{$blue};
+  --brown: #{$brown};
+  --beige: #{$beige};
+  --lightpink: #{$lightpink};
+  --lightblue: #{$lightblue};
 }
 
 @media (prefers-reduced-motion: no-preference) {
