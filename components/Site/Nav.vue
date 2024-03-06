@@ -29,7 +29,7 @@ const localePath = useLocalePath()
         <ul>
           <li v-for="blok in headerMenu" :key="blok._uid">
             <NuxtLink :to="localePath(`/${blok.link.story.url}`)">
-              {{ blok.link.story.name }}
+              {{ blok.label }}
             </NuxtLink>
           </li>
         </ul>

@@ -26,7 +26,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: 'https://megamobiliario.com',
-      environment: 'preview'
+      environment: 'preview',
+      downloadsPass: ''
     }
   },
 

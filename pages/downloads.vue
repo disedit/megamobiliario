@@ -1,10 +1,9 @@
 <script setup>
 const { locale } = useI18n()
-const { slug } = useRoute().params
 const version = useEnvironment()
 
 const story = await useAsyncStoryblok(
-  slug && slug.length > 0 ? slug.join('/') : 'home',
+  'downloads',
   { version, language: locale.value }
 )
 
@@ -17,15 +16,26 @@ useServerSeoMeta({
   description,
   ogDescription: description,
   ogImage: story.value.content.seo_picture,
-  twitterCard: 'summary_large_image',
-  keywords: story.value.content.seo_keywords
+  twitterCard: 'summary_large_image'
 })
 
 useHead({ title })
+
+const showDownloads = ref(false)
 </script>
 
 <template>
   <main>
-    <StoryblokComponent v-if="story" :blok="story.content" />
+    <div v-if="!showDownloads">
+      <DownloadsNewsletter />
+      <DownloadsPassword @allowed="showDownloads = true" />
+    </div>
+    <div v-else>
+      <StoryblokComponent
+        v-for="blok in story.content.downloads"
+        :key="blok._uid"
+        :blok="blok"
+      />
+    </div>
   </main>
 </template>
