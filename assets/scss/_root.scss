@@ -14,10 +14,33 @@
   --beige: #{$beige};
   --lightpink: #{$lightpink};
   --lightblue: #{$lightblue};
+  --spacer-1: .25rem;
+  --spacer-2: .5rem;
+  --spacer-3: .75rem;
+  --spacer-4: 1rem;
+  --spacer-5: 1.25rem;
+  --spacer-6: 1.5rem;
+  --spacer-7: 1.75rem;
+  --spacer-8: 2rem;
+  --spacer-9: 2.5rem;
+  --spacer-10: 3rem;
+  --site-padding: var(--spacer-10);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
+  }
+}
+
+@include media('<lg') {
+  :root {
+    --site-padding: var(--spacer-8);
+  }
+}
+
+@include media('<md') {
+  :root {
+    --site-padding: var(--spacer-4);
   }
 }

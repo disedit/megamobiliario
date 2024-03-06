@@ -1,5 +1,5 @@
 <template>
   <footer>
-    Footer
+    Footer fdfk s
   </footer>
 </template>

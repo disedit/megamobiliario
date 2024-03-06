@@ -34,8 +34,9 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
 
   modules: [
-    "@nuxtjs/i18n",
-    ["@storyblok/nuxt", { accessToken: process.env.STORYBLOK_TOKEN }]
+    '@nuxtjs/i18n',
+    ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_TOKEN }],
+    '@nuxt/image'
   ],
 
   vite: {
@@ -61,4 +62,11 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'lang',
   },
+
+  image: {
+    provider: 'storyblok',
+    storyblok: {
+      baseURL: 'https://a.storyblok.com'
+    }
+  }
 })

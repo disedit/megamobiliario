@@ -24,7 +24,6 @@ useHead({ title })
 
 <template>
   <main class="page">
-    {{ $t('main.hello') }}
     <StoryblokComponent
       v-for="blok in home.content.blocks"
       :key="blok._uid"

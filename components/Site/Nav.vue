@@ -20,22 +20,57 @@ const localePath = useLocalePath()
 </script>
  
 <template>
-  <header>
-    <div>
-      <NuxtLink to="/">
-        <h1 class="visually-hidden">Megamobiliario</h1>
+  <header class="header">
+    <div class="header-navbar container">
+      <NuxtLink to="/" class="header-logo">
+        <span class="visually-hidden">Megamobiliario</span>
         <SiteLogo />
       </NuxtLink>
-      <nav v-if="headerMenu">
+      <nav v-if="headerMenu" class="header-menu">
         <ul>
           <li v-for="blok in headerMenu" :key="blok._uid">
-            <NuxtLink :to="localePath(`/${blok.link.story.url}`)">
+            <SiteUnderlinedLink :to="localePath(`/${blok.link.story.url}`)">
               {{ blok.label }}
-            </NuxtLink>
+            </SiteUnderlinedLink>
           </li>
         </ul>
       </nav>
-      <SiteLanguage />
+      <SiteLanguage class="header-language" />
     </div>
   </header>
 </template>
+
+<style lang="scss" scoped>
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: var(--text-lg);
+    align-items: center;
+
+    &-logo {
+      svg {
+        height: 3.5rem;
+      }
+    }
+    
+    &-navbar {
+      display: flex;
+    }
+
+    &-menu {
+      margin-left: auto;
+
+      ul {
+        display: flex;
+        list-style: none;
+      }
+
+      a {
+        padding: 2rem;
+        margin: -2rem 0;
+      }
+    }
+  }
+</style>

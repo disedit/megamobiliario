@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/image": "^1.4.0",
     "@storyblok/nuxt": "^6.0.4",
     "include-media": "^2.0.0",
     "nuxt": "^3.10.3",

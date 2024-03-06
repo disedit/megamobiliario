@@ -2,7 +2,9 @@
   <div>
     <NuxtLoadingIndicator :color="false" />
     <SiteNav />
-    <slot />
+    <div class="page">
+      <slot />
+    </div>
     <SiteFooter />
   </div>
 </template>

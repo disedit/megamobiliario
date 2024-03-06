@@ -23,6 +23,12 @@ a {
   }
 }
 
+.container {
+  max-width: $max-container;
+  margin: 0 auto;
+  padding: var(--site-padding);
+}
+
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
   @include visually-hidden();
