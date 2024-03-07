@@ -64,6 +64,7 @@ const backgroundStyle = computed(() => {
     font-size: inherit;
     text-align: center;
     line-height: 1.1;
+    text-wrap: balance;
 
     &-content {
       white-space: pre-wrap;

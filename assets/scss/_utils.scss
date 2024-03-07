@@ -1,0 +1,30 @@
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: map-get($color, 'background');
+  }
+
+  .text-#{$name} {
+    color: map-get($color, 'background');;
+  }
+
+  .color-#{$name} {
+    --bg-color: #{map-get($color, 'background')};
+    --text-color: #{map-get($color, 'text')};
+  }
+}
+
+$sizes: (
+  'sm': var(--text-sm),
+  'base': var(--text-base),
+  'md': var(--text-md),
+  'lg': var(--text-lg),
+  'xl': var(--text-xl),
+  'xxl': var(--text-xxl),
+  'xxxl': var(--text-xxxl),
+);
+
+@each $name, $size in $sizes {
+  .text-#{$name} {
+    --text-size: #{$size};
+  }
+}

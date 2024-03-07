@@ -26,7 +26,7 @@ const showDownloads = ref(false)
 
 <template>
   <main>
-    <SiteNav :light="story.content.light_nav" />
+    <SiteNav :light="story.content.light_nav" :color="story.content.nav_color" />
     <div v-if="!showDownloads">
       <DownloadsNewsletter />
       <DownloadsPassword @allowed="showDownloads = true" />

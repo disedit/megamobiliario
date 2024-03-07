@@ -5,11 +5,13 @@ defineProps({ blok: Object })
 <template>
   <section
     v-editable="blok"
-    :class="['featured-text', `bg-${blok.background}`, `text-${blok.text_color}`]"
+    :class="['featured-text', `bg-${blok.background}`, `text-${blok.text_color}`, `text-${blok.text_size}`]"
   >
-    <p class="featured-text-content">
-      {{ blok.text }}
-    </p>
+    <div class="container">
+      <p class="featured-text-content">
+        {{ blok.text }}
+      </p>
+    </div>
   </section>
 </template>
 
@@ -20,5 +22,13 @@ defineProps({ blok: Object })
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 10vh 0;
+
+  p {
+    max-width: 70ch;
+    text-align: center;
+    text-wrap: balance;
+    font-size: var(--text-size);
+  }
 }
 </style>

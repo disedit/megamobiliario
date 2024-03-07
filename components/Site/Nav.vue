@@ -3,6 +3,10 @@ defineProps({
   light: {
     type: Boolean,
     default: false
+  },
+  color: {
+    type: String,
+    default: 'white'
   }
 })
 
@@ -24,10 +28,32 @@ const headerMenu = computed(() => {
 })
 
 const localePath = useLocalePath()
+
+const { y } = useWindowScroll()
+const showNavbar = ref(true)
+const lastScrollPosition = ref(0)
+
+watch(y, (currentScrollPosition) => {
+  if (currentScrollPosition < 0 || Math.abs(currentScrollPosition - lastScrollPosition.value) < 60) {
+    return
+  }
+  showNavbar.value = currentScrollPosition < lastScrollPosition.value
+  lastScrollPosition.value = currentScrollPosition
+})
 </script>
  
 <template>
-  <header :class="['header', { 'header--light': light }]">
+  <header
+    ref="nav"
+    :class="[
+      'header', `color-${color}`,
+      {
+        'header--light': light,
+        'header--hidden': !showNavbar,
+        'header--scrolled': y > 300
+      }
+    ]"
+  >
     <div class="header-navbar container">
       <NuxtLink to="/" class="header-logo">
         <span class="visually-hidden">Megamobiliario</span>
@@ -49,7 +75,7 @@ const localePath = useLocalePath()
 
 <style lang="scss" scoped>
   .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -57,9 +83,28 @@ const localePath = useLocalePath()
     align-items: center;
     z-index: 1000;
     color: var(--black);
+    transition: .25s all ease-out;
 
-    &--light {
+    &--light:not(.header--scrolled) {
       color: var(--white);
+    }
+
+    &--hidden {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    &--scrolled {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      
+      .container {
+        padding-top: var(--spacer-5);
+        padding-bottom: var(--spacer-5);
+      }
+    }
+
+    .container {
+      transition: padding .25s ease;
     }
 
     &-logo {

@@ -24,7 +24,7 @@ useHead({ title })
 
 <template>
   <main>
-    <SiteNav :light="home.content.light_nav" />
+    <SiteNav :light="home.content.light_nav" :color="home.content.nav_color" />
     <StoryblokComponent
       v-for="blok in home.content.blocks"
       :key="blok._uid"

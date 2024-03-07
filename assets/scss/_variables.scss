@@ -28,12 +28,12 @@ $navbar-safe-area: 9.774rem;
 
 /* Utils */
 $colors: (
-  "black": $black,
-  "blue": $blue,
-  "brown": $brown,
-  "beige": $beige,
-  "lightpink": $lightpink,
-  "lightblue": $lightblue,
-  "white": $white,
-  "transparent": transparent
+  "black": ("background": $black, "text": $white),
+  "blue": ("background": $blue, "text": $white),
+  "brown": ("background": $brown, "text": $white),
+  "beige": ("background": $beige, "text": $black),
+  "lightpink": ("background": $lightpink, "text": $black),
+  "lightblue": ("background": $lightblue, "text": $black),
+  "white": ("background": $white, "text": $black),
+  "transparent": ("background": transparent, "text": $white)
 );
