@@ -1,22 +1,15 @@
 /* Colors */
-$black: black;
+$black: #000;
 $blue: #606D80;
 $brown: #9B674C;
 $beige: #C8BFB0;
 $lightpink: #FEF9F8;
 $lightblue: #E0E2E6;
+$white: #fff;
 
 /* Fonts */
 $font-base: Switzer, sans-serif;
 $font-headline: Satoshi, sans-serif;
-
-/* Text sizing */
-$text-sm: .95rem;
-$text-base: 1rem;
-$text-md: 1.1rem;
-$text-lg: 1.25rem;
-$text-xl: 1.4rem;
-$text-2xl: 2rem;
 
 /* Media breakpoints */
 $breakpoints: (
@@ -31,4 +24,16 @@ $breakpoints: (
 $max-container: 2000px;
 
 /* Spacing */
-$navbar-safe-area: 4rem;
+$navbar-safe-area: 9.774rem;
+
+/* Utils */
+$colors: (
+  "black": $black,
+  "blue": $blue,
+  "brown": $brown,
+  "beige": $beige,
+  "lightpink": $lightpink,
+  "lightblue": $lightblue,
+  "white": $white,
+  "transparent": transparent
+);

@@ -34,6 +34,7 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
 
   modules: [
+    '@vueuse/nuxt',
     '@nuxtjs/i18n',
     ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_TOKEN }],
     '@nuxt/image'

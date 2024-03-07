@@ -2,13 +2,8 @@
   --navbar-safe-area: #{$navbar-safe-area};
   --font-base: #{$font-base};
   --font-headline: #{$font-headline};
-  --text-sm: #{$text-sm};
-  --text-base: #{$text-base};
-  --text-md: #{$text-md};
-  --text-lg: #{$text-lg};
-  --text-xl: #{$text-xl};
-  --text-2xl: #{$text-2xl};
   --black: #{$black};
+  --white: #{$white};
   --blue: #{$blue};
   --brown: #{$brown};
   --beige: #{$beige};
@@ -42,5 +37,41 @@
 @include media('<md') {
   :root {
     --site-padding: var(--spacer-4);
+  }
+}
+
+/* Fluid font size variables, for browsers that support clamp */
+@supports (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --text-sm: clamp(0.8rem, -0.02vw + 0.8rem, 0.79rem);
+		--text-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+		--text-md: clamp(1.25rem, 0.97vw + 1.01rem, 1.78rem);
+		--text-lg: clamp(1.56rem, 2.02vw + 1.06rem, 2.67rem);
+		--text-xl: clamp(1.95rem, 3.74vw + 1.02rem, 4.01rem);
+		--text-xxl: clamp(2.44rem, 6.49vw + 0.82rem, 6.01rem);
+		--text-xxxl: clamp(3.05rem, 10.85vw + 0.34rem, 9.02rem);
+  }
+}
+/* Fallback variables for browsers that don't support clamp */
+@supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+  :root {
+    --text-sm: 0.8rem;
+		--text-base: 1rem;
+		--text-md: 1.25rem;
+		--text-lg: 1.56rem;
+		--text-xl: 1.95rem;
+		--text-xxl: 2.44rem;
+		--text-xxxl: 3.05rem;
+  }
+  @media screen and (min-width: 1280px) {
+    :root {
+      --text-sm: 0.79rem;
+			--text-base: 1.19rem;
+			--text-md: 1.78rem;
+			--text-lg: 2.67rem;
+			--text-xl: 4.01rem;
+			--text-xxl: 6.01rem;
+			--text-xxxl: 9.02rem;
+    }
   }
 }

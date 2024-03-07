@@ -1,7 +1,6 @@
 <template>
   <div>
     <NuxtLoadingIndicator :color="false" />
-    <SiteNav />
     <div class="page">
       <slot />
     </div>

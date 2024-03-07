@@ -20,7 +20,7 @@
       content: '';
       position: absolute;
       height: 2px;
-      background: var(--black);
+      background: currentColor;
       left: 0;
       right: 0;
       bottom: -.25rem;

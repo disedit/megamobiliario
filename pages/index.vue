@@ -23,7 +23,8 @@ useHead({ title })
 </script>
 
 <template>
-  <main class="page">
+  <main>
+    <SiteNav :light="home.content.light_nav" />
     <StoryblokComponent
       v-for="blok in home.content.blocks"
       :key="blok._uid"

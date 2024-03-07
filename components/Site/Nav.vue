@@ -1,4 +1,11 @@
 <script setup>
+defineProps({
+  light: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const { locale } = useI18n()
 const version = useEnvironment()
 const storyblokApi = useStoryblokApi()
@@ -20,7 +27,7 @@ const localePath = useLocalePath()
 </script>
  
 <template>
-  <header class="header">
+  <header :class="['header', { 'header--light': light }]">
     <div class="header-navbar container">
       <NuxtLink to="/" class="header-logo">
         <span class="visually-hidden">Megamobiliario</span>
@@ -46,8 +53,14 @@ const localePath = useLocalePath()
     top: 0;
     left: 0;
     right: 0;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     align-items: center;
+    z-index: 1000;
+    color: var(--black);
+
+    &--light {
+      color: var(--white);
+    }
 
     &-logo {
       svg {
@@ -70,6 +83,7 @@ const localePath = useLocalePath()
       a {
         padding: 2rem;
         margin: -2rem 0;
+        color: inherit;
       }
     }
   }

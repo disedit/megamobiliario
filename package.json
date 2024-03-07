@@ -19,6 +19,8 @@
   },
   "devDependencies": {
     "@nuxtjs/i18n": "next",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/nuxt": "^10.9.0",
     "sass": "^1.71.1"
   }
 }
