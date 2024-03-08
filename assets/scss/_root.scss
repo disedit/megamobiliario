@@ -37,7 +37,7 @@
 
 @include media('<md') {
   :root {
-    --site-padding: var(--spacer-4);
+    --site-padding: var(--spacer-6);
   }
 }
 
@@ -46,7 +46,7 @@
   :root {
     --text-sm: clamp(0.8rem, -0.02vw + 0.8rem, 0.79rem);
 		--text-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-		--text-md: clamp(1.25rem, 0.97vw + 1.01rem, 1.78rem);
+		--text-md: clamp(1.2rem, 0.95vw + 1rem, 1.6rem);
 		--text-lg: clamp(1.56rem, 2.02vw + 1.06rem, 2.67rem);
 		--text-xl: clamp(1.95rem, 3.74vw + 1.02rem, 4.01rem);
 		--text-xxl: clamp(2.44rem, 6.49vw + 0.82rem, 6.01rem);

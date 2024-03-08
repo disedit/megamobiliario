@@ -13,6 +13,7 @@
     "@nuxt/image": "^1.4.0",
     "@storyblok/nuxt": "^6.0.4",
     "include-media": "^2.0.0",
+    "marked": "^12.0.1",
     "nuxt": "^3.10.3",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0"
