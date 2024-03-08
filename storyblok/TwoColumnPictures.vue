@@ -73,7 +73,7 @@
     font-family: var(--font-headline);
     font-size: var(--text-size);
     line-height: 1;
-    align-items: end;
+    align-items: flex-end;
     white-space: pre-wrap;
   }
 

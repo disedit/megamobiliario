@@ -10,11 +10,12 @@
 
 <style lang="scss">
 .page {
-  min-height: calc(100vh - var(--navbar-safe-area));
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 .nuxt-loading-indicator {
-  background: var(--primary);
-  top: var(--navbar-safe-area) !important;
+  background: var(--blue);
+  top: 0;
 }
 </style>

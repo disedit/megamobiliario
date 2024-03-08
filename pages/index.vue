@@ -1,7 +1,8 @@
 <script setup>
 const { locale } = useI18n()
 const version = useEnvironment()
-const home = await useAsyncStoryblok("home", {
+const home = await useAsyncStoryblok(
+  'home', {
   language: locale.value,
   version
 })

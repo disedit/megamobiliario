@@ -2,7 +2,9 @@
 const props = defineProps({ blok: Object })
 
 const tag = computed(() => {
-  return props.blok.link ? 'a' : 'div'
+  return props.blok.link?.cached_url ?
+    props.blok.link.linktype === 'story' ? resolveComponent('NuxtLink') : 'a'
+    : 'div'
 })
 </script>
 
@@ -11,7 +13,11 @@ const tag = computed(() => {
     v-editable="blok"
     :class="['info-box', `color-${blok.color}`, `align-${blok.align}`]"
   >
-    <component :is="tag" :href="blok.link?.url" :target="blok.link?.target">
+    <component
+      :is="tag"
+      :href="blok.link?.linktype === 'url' ? blok.link?.cached_url : null"
+      :to="blok.link?.linktype === 'story' ? blok.link?.cached_url : null"
+      :target="blok.link?.target">
       <div class="container">
         <div class="info-box-grid">
           <div class="info-box-content">

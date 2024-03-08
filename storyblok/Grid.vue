@@ -3,15 +3,34 @@ defineProps({ blok: Object })
 </script>
 
 <template>
-  <div
+  <section
     v-editable="blok"
-    class="container"
+    :class="['grid', `bg-${blok.background_color}`, `text-${blok.text_color}`]"
   >
-    <StoryblokComponent
-      v-for="blok in blok.columns"
-      :key="blok._uid"
-      :blok="blok"
-    />
-  </div>
+    <div class="container">
+      <header v-if="blok.header.length > 0" class="grid-header">
+        <StoryblokComponent
+          v-for="blok in blok.header"
+          :key="blok._uid"
+          :blok="blok" />
+      </header>
+
+      <div v-if="blok.blocks.length > 0" class="grid-content">
+        <StoryblokComponent
+          v-for="blok in blok.blocks"
+          :key="blok._uid"
+          :blok="blok" />
+      </div>
+    </div>
+  </section>
 </template>
  
+<style lang="scss" scoped>
+.grid {
+  &-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--site-padding);
+  }
+}
+</style>

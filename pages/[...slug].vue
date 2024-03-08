@@ -26,7 +26,13 @@ useHead({ title })
 
 <template>
   <main>
-    <SiteNav :light="story.content.light_nav" :color="story.content.nav_color" />
-    <StoryblokComponent v-if="story" :blok="story.content" />
+    <SiteNav
+      :light="story.content.light_nav"
+      :color="story.content.nav_color"
+    />
+    <StoryblokComponent
+      v-if="story"
+      :blok="story.content"
+    />
   </main>
 </template>

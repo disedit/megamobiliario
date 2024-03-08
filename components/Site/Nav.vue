@@ -55,7 +55,7 @@ watch(y, (currentScrollPosition) => {
     ]"
   >
     <div class="header-navbar container">
-      <NuxtLink to="/" class="header-logo">
+      <NuxtLink :to="localePath('/')" class="header-logo">
         <span class="visually-hidden">Megamobiliario</span>
         <SiteLogo />
       </NuxtLink>
@@ -127,7 +127,7 @@ watch(y, (currentScrollPosition) => {
 
       a {
         padding: 2rem;
-        margin: -2rem 0;
+        margin: -2rem -.5rem;
         color: inherit;
       }
     }
