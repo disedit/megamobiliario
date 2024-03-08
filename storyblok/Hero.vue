@@ -3,7 +3,7 @@ const props = defineProps({ blok: Object })
 
 const img = useImage()
 const backgroundStyle = computed(() => {
-  if (!props.blok.background_image) return null
+  if (!props.blok.background_image?.filename) return null
   const imgUrl = img(props.blok.background_image.filename)
   return { backgroundImage: `url('${imgUrl}')` }
 })

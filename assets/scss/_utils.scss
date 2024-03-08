@@ -1,3 +1,4 @@
+/* Colors */
 @each $name, $color in $colors {
   .bg-#{$name} {
     background-color: map-get($color, 'background');
@@ -26,5 +27,12 @@ $sizes: (
 @each $name, $size in $sizes {
   .text-#{$name} {
     --text-size: #{$size};
+  }
+}
+
+/* Display */
+@include media('<md') {
+  .md\:hidden {
+    display: none;
   }
 }

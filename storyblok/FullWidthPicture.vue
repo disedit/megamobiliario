@@ -9,7 +9,7 @@ defineProps({ blok: Object })
     :style="{ '--picture-height': blok.fixed_height }"
   >
     <NuxtPicture
-      v-if="blok.picture"
+      v-if="blok.picture?.filename"
       format="avif,webp"
       :src="blok.picture.filename"
       :img-attrs="{ alt: blok.picture.alt, class: 'full-width-picture-img' }"
@@ -23,7 +23,6 @@ defineProps({ blok: Object })
   picture {
     width: 100%;
     display: flex;
-    background: red;
   }
 
   img {

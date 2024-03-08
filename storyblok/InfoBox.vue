@@ -25,7 +25,7 @@ const tag = computed(() => {
               <UtilMarked :content="blok.text" />
             </div>
           </div>
-          <div v-if="blok.thumbnail" class="info-box-picture">
+          <div v-if="blok.thumbnail?.filename" class="info-box-picture">
             <NuxtImg
               :src="blok.thumbnail.filename"
               :alt="blok.thumbnail.alt"
