@@ -39,7 +39,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture?.filename"
         :src="blok.picture.filename"
         :alt="blok.picture.alt"
-        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.cachec_url }]"
+        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.cached_url }]"
       />
       <NuxtImg
         v-if="blok.picture_hover?.filename"

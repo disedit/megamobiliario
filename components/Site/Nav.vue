@@ -62,7 +62,7 @@ watch(y, (currentScrollPosition) => {
       <nav v-if="headerMenu" class="header-menu">
         <ul>
           <li v-for="blok in headerMenu" :key="blok._uid">
-            <SiteUnderlinedLink :to="localePath(`/${blok.link.story.url}`)">
+            <SiteUnderlinedLink v-if="blok.link.story.url" :to="localePath(`/${blok.link.story.url}`)">
               {{ blok.label }}
             </SiteUnderlinedLink>
           </li>
@@ -109,6 +109,7 @@ watch(y, (currentScrollPosition) => {
 
     &-logo {
       svg {
+        transform: translateY(.15em);
         height: 3.5rem;
       }
     }

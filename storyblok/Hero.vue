@@ -37,7 +37,7 @@ const backgroundStyle = computed(() => {
   justify-content: center;
   flex-direction: column;
   position: relative;
-  padding: calc(var(--navbar-safe-area) + var(--spacer-4) + 10vh) var(--site-padding) calc(var(--spacer-4) + 10vh) var(--site-padding);
+  padding: calc(var(--navbar-safe-area) + var(--spacer-4) + 6vh) var(--site-padding) calc(var(--spacer-4) + 5vh) var(--site-padding);
   font-size: var(--text-xxl);
 
   &.full-height {

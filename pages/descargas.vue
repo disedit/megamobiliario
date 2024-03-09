@@ -3,7 +3,7 @@ const { locale } = useI18n()
 const version = useEnvironment()
 
 const story = await useAsyncStoryblok(
-  'downloads',
+  'descargas',
   { version, language: locale.value }
 )
 
@@ -33,7 +33,7 @@ const showDownloads = ref(false)
     </div>
     <div v-else>
       <StoryblokComponent
-        v-for="blok in story.content.downloads"
+        v-for="blok in story.content.blocks"
         :key="blok._uid"
         :blok="blok"
       />
