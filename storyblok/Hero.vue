@@ -73,7 +73,7 @@ const backgroundStyle = computed(() => {
   &-subheading {
     font-size: var(--text-lg);
     margin: 0;
-    margin-top: .5em;
+    margin-top: .25em;
   }
 
   &-arrow {

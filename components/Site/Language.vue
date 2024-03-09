@@ -7,9 +7,13 @@ const switchLocalePath = useSwitchLocalePath()
 <template>
   <ul class="language">
     <li v-for="lang in locales" :key="lang">
-      <NuxtLink :to="switchLocalePath(lang.code)" :title="lang.name">
+      <SiteUnderlinedLink
+        :to="switchLocalePath(lang.code)"
+        :title="lang.name"
+        :class="{ 'active': locale === lang.code }"
+      >
         {{ lang.code }}
-      </NuxtLink>
+      </SiteUnderlinedLink>
     </li>
   </ul>
 </template>
@@ -21,7 +25,16 @@ const switchLocalePath = useSwitchLocalePath()
   text-transform: uppercase;
 
   li:first-child::after {
-    content: ' / ';
+    content: '/';
+    margin: 0 .25rem;
+  }
+  
+  a {
+    text-decoration: none;
+
+    &.active {
+      font-weight: 900;
+    }
   }
 }
 </style>

@@ -59,7 +59,7 @@ const nextPage = computed(() => {
 })
 
 const nextLink = computed(() => {
-  if (props.blok.custom_link.cached_url) {
+  if (props.blok.custom_link.id) {
     return props.blok.custom_link.linktype === 'story'
       ? internalLink(props.blok.custom_link.cached_url)
       : props.blok.custom_link.cached_url

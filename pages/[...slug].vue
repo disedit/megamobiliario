@@ -9,7 +9,8 @@ const story = await useAsyncStoryblok(
 )
 
 /* SEO Metatags */
-const title = story.value.content.title || story.value.content.seo_title
+const pageTitle = story.value.content.title || story.value.content.seo_title
+const title = `${pageTitle} - Megamobiliario`
 const description = story.value.content.seo_description
 useServerSeoMeta({
   title,

@@ -1,13 +1,17 @@
 <script setup>
+const props = defineProps({
+  password: { type: String, required: true }
+})
+
 const emit = defineEmits(['allowed'])
 const password = ref('')
 const passwordInput = ref(null)
-const { downloadsPass } = useRuntimeConfig().public
 const error = ref(false)
 
 function checkPassword () {
-  if (password.value === downloadsPass) {
+  if (password.value === props.password) {
     emit('allowed', true)
+    localStorage.setItem('downloads_pass', props.password)
   } else {
     error.value = true
     password.value = ''

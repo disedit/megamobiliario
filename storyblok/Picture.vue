@@ -3,7 +3,7 @@ const props = defineProps({ blok: Object })
 
 /* Link */
 const tag = computed(() => {
-  return props.blok.link?.cached_url ?
+  return props.blok.link?.id ?
     props.blok.link.linktype === 'story' ? resolveComponent('NuxtLink') : 'a'
     : 'article'
 })
@@ -39,7 +39,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture?.filename"
         :src="blok.picture.filename"
         :alt="blok.picture.alt"
-        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.cached_url }]"
+        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.id }]"
       />
       <NuxtImg
         v-if="blok.picture_hover?.filename"
