@@ -18,7 +18,7 @@ defineProps({ blok: Object })
 
     &-text {
       font-size: var(--text-size);
-      margin: var(--spacer-6) 0 var(--spacer-10) 0;
+      margin: 0 0 var(--spacer-14) 0;
     }
   }
 </style>

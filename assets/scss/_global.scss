@@ -24,7 +24,7 @@ a {
 }
 
 .container {
-  max-width: $max-container;
+  max-width: var(--container-max-width);
   margin: 0 auto;
   padding: var(--site-padding);
 }

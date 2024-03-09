@@ -20,7 +20,10 @@
   --spacer-8: 2rem;
   --spacer-9: 2.5rem;
   --spacer-10: 3rem;
+  --spacer-12: 4rem;
+  --spacer-14: 5rem;
   --site-padding: var(--spacer-10);
+  --container-max-width: #{$container-max-width};
 }
 
 @media (prefers-reduced-motion: no-preference) {

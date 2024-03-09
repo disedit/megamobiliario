@@ -6,7 +6,7 @@ defineProps({ blok: Object })
   <section
     v-editable="blok"
     :class="[
-      'grid', `bg-${blok.background_color}`, `text-${blok.text_color}`,
+      'grid', `bg-${blok.background_color}`, `text-${blok.text_color}`, 'legoable',
       { 'aspect-11': blok.force_square }
     ]"
   >
@@ -22,7 +22,8 @@ defineProps({ blok: Object })
         <StoryblokComponent
           v-for="blok in blok.blocks"
           :key="blok._uid"
-          :blok="blok" />
+          :blok="blok"
+          class="grid-item" />
       </div>
     </div>
   </section>
@@ -30,14 +31,21 @@ defineProps({ blok: Object })
  
 <style lang="scss" scoped>
 .grid {
+  padding: var(--spacer-10) 0;
+
   &-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--site-padding);
+    column-gap: var(--site-padding);
+    margin-top: calc(var(--site-padding) * -1);
+  }
+
+  &-item {
+    margin-top: var(--site-padding);
   }
 }
 
-@include media('<md') {
+@include media('<lg') {
   .grid {
     &-content {
       grid-template-columns: 1fr;

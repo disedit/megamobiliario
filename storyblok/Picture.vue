@@ -39,7 +39,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture?.filename"
         :src="blok.picture.filename"
         :alt="blok.picture.alt"
-        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename }]"
+        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.cachec_url }]"
       />
       <NuxtImg
         v-if="blok.picture_hover?.filename"
@@ -74,7 +74,7 @@ const computedArrowPosition = computed(() => {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 4;
-    gap: var(--spacer-2);
+    gap: 0;
     text-decoration: none;
 
     &-thumbnail {
@@ -97,18 +97,20 @@ const computedArrowPosition = computed(() => {
 
     &-title {
       margin: 0;
-      margin-top: var(--spacer-6);
+      margin-top: var(--spacer-8);
       font-size: var(--text-lg);
       font-family: var(--font-headline);
     }
 
     &-date {
       margin: 0;
+      margin-top: var(--spacer-1);
       font-size: var(--text-base);
     }
 
     &-text {
       margin: 0;
+      margin-top: var(--spacer-4);
       font-size: var(--text-md);
       line-height: 1.1;
     }

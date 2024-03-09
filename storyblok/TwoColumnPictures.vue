@@ -6,7 +6,7 @@
     v-editable="blok"
     :class="[
       'two-column-pictures', `bg-${blok.background_color}`, `text-${blok.text_color}`,
-      { 'full-height': blok.full_height }
+      { 'full-height': blok.full_height, 'invert': blok.invert }
     ]"
   >
       <div class="container">
@@ -80,6 +80,23 @@
   &.full-height {
     .column-picture :deep(img) {
       height: calc(100vh - var(--site-padding) * 2 - var(--spacer-6) * 2);
+    }
+  }
+
+  &.invert {
+    .two-column-pictures-grid {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .left-column-picture {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    .right-column-picture,
+    .right-column-text {
+      grid-column: 1;
+      grid-row: 1;
     }
   }
 }

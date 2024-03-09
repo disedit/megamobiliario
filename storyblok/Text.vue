@@ -48,14 +48,18 @@ const date = useDate(props.blok.date)
 
   &-heading {
     margin: 0;
-    margin-bottom: var(--spacer-1);
+    margin-bottom: var(--spacer-8);
     line-height: 1;
     font-size: var(--text-lg);
+    font-family: var(--font-headline);
+
+    & + .text-subheading {
+      margin-top: calc(var(--spacer-5) * -1);
+    }
   }
 
   &-subheading {
     font-size: var(--text-base);
-    margin-top: var(--spacer-4);
     margin-bottom: var(--spacer-8);
   }
 
@@ -87,6 +91,11 @@ const date = useDate(props.blok.date)
       }
     }
   }
+}
+
+.legoable .text,
+.legoable .text .container {
+  padding: 0;
 }
 
 @include media('<md') {
