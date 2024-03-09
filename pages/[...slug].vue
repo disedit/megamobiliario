@@ -9,7 +9,7 @@ const story = await useAsyncStoryblok(
 )
 
 /* SEO Metatags */
-const title = story.value.content.seo_title
+const title = story.value.content.title || story.value.content.seo_title
 const description = story.value.content.seo_description
 useServerSeoMeta({
   title,

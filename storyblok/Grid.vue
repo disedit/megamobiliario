@@ -5,7 +5,10 @@ defineProps({ blok: Object })
 <template>
   <section
     v-editable="blok"
-    :class="['grid', `bg-${blok.background_color}`, `text-${blok.text_color}`]"
+    :class="[
+      'grid', `bg-${blok.background_color}`, `text-${blok.text_color}`,
+      { 'aspect-11': blok.force_square }
+    ]"
   >
     <div class="container">
       <header v-if="blok.header.length > 0" class="grid-header">
@@ -29,8 +32,16 @@ defineProps({ blok: Object })
 .grid {
   &-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--site-padding);
+  }
+}
+
+@include media('<md') {
+  .grid {
+    &-content {
+      grid-template-columns: 1fr;
+    }
   }
 }
 </style>

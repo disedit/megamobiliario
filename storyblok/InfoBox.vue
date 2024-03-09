@@ -6,6 +6,8 @@ const tag = computed(() => {
     props.blok.link.linktype === 'story' ? resolveComponent('NuxtLink') : 'a'
     : 'div'
 })
+
+const { internalLink } = useLinks()
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const tag = computed(() => {
     <component
       :is="tag"
       :href="blok.link?.linktype === 'url' ? blok.link?.cached_url : null"
-      :to="blok.link?.linktype === 'story' ? blok.link?.cached_url : null"
+      :to="blok.link?.linktype === 'story' ? internalLink(blok.link?.cached_url) : null"
       :target="blok.link?.target">
       <div class="container">
         <div class="info-box-grid">

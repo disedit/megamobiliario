@@ -1,4 +1,6 @@
-<script setup>defineProps({ blok: Object })
+<script setup>
+const props = defineProps({ blok: Object })
+const date = useDate(props.blok.date)
 </script>
 
 <template>
@@ -11,8 +13,8 @@
           <h2 v-if="blok.heading" class="text-heading">
             {{ blok.heading }}
           </h2>
-          <p v-if="blok.subheading" class="text-subheading">
-            {{ blok.subheading }}
+          <p v-if="blok.subheading || blok.date" class="text-subheading">
+            {{ date.human }} {{ blok.subheading }}
           </p>
         </div>
         <div class="text-grid">
