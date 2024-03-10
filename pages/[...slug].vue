@@ -1,4 +1,4 @@
-<script sºetup>
+<script setup>
 /* Load site config */
 const config = await useConfig()
 
