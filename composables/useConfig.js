@@ -11,6 +11,6 @@ export const useConfig = async () => {
     }),
     { watch: [locale] }
   )
-
-  return config.value.data.story.content
+  console.log('config', config, config.value)
+  return config.value?.data?.story?.content
 }
