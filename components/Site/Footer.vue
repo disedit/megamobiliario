@@ -1,7 +1,12 @@
+<script setup>
+const config = await useConfig()
+</script>
+
 <template>
   <footer class="footer">
     <div class="container">
       Footer
+      <pre>{{ config }}</pre>
     </div>
   </footer>
 </template>

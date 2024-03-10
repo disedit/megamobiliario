@@ -9,8 +9,10 @@
   display: inline-block;
   text-decoration: none;
 
-  &.router-link-active {
+  &.router-link-active,
+  &.active {
     font-weight: 900;
+    letter-spacing: -.025em;
   }
 
   span {

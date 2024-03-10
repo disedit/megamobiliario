@@ -10,25 +10,15 @@ defineProps({
   }
 })
 
-const { locale } = useI18n()
-const version = useEnvironment()
-const storyblokApi = useStoryblokApi()
-const { data: config } = await useAsyncData(
-  'config_' + locale.value,
-  async () => await storyblokApi.get('cdn/stories/config', {
-    version,
-    resolve_links: 'url',
-    language: locale.value
-  }),
-  { watch: [locale] }
-)
-
-const headerMenu = computed(() => {
-  return config.value.data.story.content.header_menu
-})
-
+/* Load nav items */
+const config = await useConfig()
+const { slug } = useRoute().params
 const localePath = useLocalePath()
+function isActive (link) {
+  return link.story.slug === slug[0]
+}
 
+/* Hide/Show nav bar on scorll */
 const { y } = useWindowScroll()
 const showNavbar = ref(true)
 const lastScrollPosition = ref(0)
@@ -59,10 +49,13 @@ watch(y, (currentScrollPosition) => {
         <span class="visually-hidden">Megamobiliario</span>
         <SiteLogo />
       </NuxtLink>
-      <nav v-if="headerMenu" class="header-menu">
+      <nav v-if="config.header_menu" class="header-menu">
         <ul>
-          <li v-for="blok in headerMenu" :key="blok._uid">
-            <SiteUnderlinedLink v-if="blok.link?.cached_url" :to="blok.link.cached_url">
+          <li v-for="blok in config.header_menu" :key="blok._uid">
+            <SiteUnderlinedLink
+              v-if="blok.link?.id"
+              :to="localePath(`/${blok.link.story.url}`)"
+              :class="{ 'active': isActive(blok.link) }">
               {{ blok.label }}
             </SiteUnderlinedLink>
           </li>

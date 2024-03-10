@@ -8,12 +8,6 @@ export default defineNuxtConfig({
       mode: 'out-in'
     },
     head: {
-      htmlAttrs: {
-        lang: 'es'
-      },
-      meta: [
-        { name: 'theme-color', content: '#E9D5CA' },
-      ],
       link: [
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
@@ -61,6 +55,7 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: 'lang',
+    baseUrl: 'https://megamobiliario.es'
   },
 
   image: {

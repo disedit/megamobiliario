@@ -48,13 +48,13 @@ const computedArrowPosition = computed(() => {
         class="picture-thumbnail-hover"
       />
     </div>
-    <h3 v-if="blok.title" class="picture-title">
+    <h3 v-if="blok.title" :class="['picture-title', { 'visually-hidden': blok.details_sr_only }]">
       {{ blok.title }}
     </h3>
-    <p v-if="blok.date" class="picture-date">
+    <p v-if="blok.date" :class="['picture-date', { 'visually-hidden': blok.details_sr_only }]">
       {{ date.human }}
     </p>
-    <p v-if="blok.text" class="picture-text">
+    <p v-if="blok.text" :class="['picture-text', { 'visually-hidden': blok.details_sr_only }]">
       {{ blok.text }}
     </p>
     <Transition name="arrow">
