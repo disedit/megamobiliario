@@ -1,4 +1,4 @@
-<script setup>
+<script sºetup>
 /* Load site config */
 const config = await useConfig()
 
@@ -17,7 +17,7 @@ const siteName = config.site_name
 const title = slug && slug.length > 0 ? `${page.title || page.name} - ${siteName}` : siteName
 const ogTitle = page.seo_title || title
 const description = page.seo_description || config.seo_description
-const ogImage = page.seo_picture || config.seo_picture
+const ogImage = page.seo_picture?.filename || config.seo_picture?.filename
 const keywords = page.seo_keywords
 const themeColor = page.theme_color?.value || config.theme_color?.value
 const twitterSite = config.twitter_account

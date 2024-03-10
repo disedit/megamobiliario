@@ -15,7 +15,7 @@ const config = await useConfig()
 const { slug } = useRoute().params
 const localePath = useLocalePath()
 function isActive (link) {
-  return link.story.slug === slug[0]
+  return link.story?.slug === slug[0]
 }
 
 /* Hide/Show nav bar on scorll */
@@ -53,8 +53,8 @@ watch(y, (currentScrollPosition) => {
         <ul>
           <li v-for="blok in config.header_menu" :key="blok._uid">
             <SiteUnderlinedLink
-              v-if="blok.link?.id"
-              :to="localePath(`/${blok.link.story.url}`)"
+              v-if="blok.link?.id && blok.link?.story"
+              :to="localePath(`/${blok.link?.story?.url}`)"
               :class="{ 'active': isActive(blok.link) }">
               {{ blok.label }}
             </SiteUnderlinedLink>
