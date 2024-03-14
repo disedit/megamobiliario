@@ -24,4 +24,24 @@ defineProps({ blok: Object })
 .has-gap .bento-row {
   gap: var(--bento-gap);
 }
+
+@include media('<md') {
+  .bento-row {
+    flex-shrink: 0;
+    overflow: scroll;
+    margin: 0 calc(var(--site-padding) * -1);
+    padding: 0 var(--site-padding);
+    scroll-snap-type: x mandatory;
+
+    &:not(:has(.bento-overflows)) {
+      background: red;
+    }
+  }
+
+  .bento-item {
+    flex-shrink: 0;
+    width: 60vw;
+    scroll-snap-align: center;
+  }
+}
 </style>

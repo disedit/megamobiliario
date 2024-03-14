@@ -81,4 +81,20 @@ defineProps({ blok: Object })
     }
   }
 }
+
+@include media('<md') {
+  .bento {
+    padding: var(--spacer-4) 0;
+
+    &-offset {
+      .bento-row {
+        margin: 0;
+      }
+
+      .bento-row:nth-child(even) {
+        translate: 0 0;
+      }
+    }
+  }
+}
 </style>

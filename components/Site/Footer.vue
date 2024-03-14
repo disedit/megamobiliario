@@ -6,7 +6,6 @@ const config = await useConfig()
   <footer class="footer">
     <div class="container">
       Footer
-      <pre>{{ config }}</pre>
     </div>
   </footer>
 </template>

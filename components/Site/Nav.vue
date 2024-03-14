@@ -126,4 +126,10 @@ watch(y, (currentScrollPosition) => {
       }
     }
   }
+
+  @include media('<md') {
+    .header {
+      display: none;
+    }
+  }
 </style>
