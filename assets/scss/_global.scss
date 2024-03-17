@@ -29,6 +29,17 @@ a {
   padding: var(--site-padding);
 }
 
+.list-reset {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
   @include visually-hidden();

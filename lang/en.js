@@ -5,5 +5,8 @@ export default {
     project: 'Next project',
     post: 'Next post',
     generic: 'Next'
+  },
+  footer: {
+    socials: 'Our social networks'
   }
 }

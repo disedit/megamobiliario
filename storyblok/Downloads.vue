@@ -18,14 +18,14 @@ const showDownloads = computed(() => {
       :blok="blok"
     />
     <div v-if="!showDownloads">
+      <DownloadsPassword
+        :password="blok.password"
+        @allowed="accessAllowed = true"
+      />
       <StoryblokComponent
         v-for="blok in blok.pre_password"
         :key="blok._uid"
         :blok="blok"
-      />
-      <DownloadsPassword
-        :password="blok.password"
-        @allowed="accessAllowed = true"
       />
     </div>
     <div v-else>

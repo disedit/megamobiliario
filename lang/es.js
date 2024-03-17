@@ -5,5 +5,8 @@ export default {
     project: 'Siguiente proyecto',
     post: 'Siguiente página',
     generic: 'Siguiente'
+  },
+  footer: {
+    socials: 'Nuestras RRSS'
   }
 }
