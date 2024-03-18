@@ -8,5 +8,14 @@ export default {
   },
   footer: {
     socials: 'Our social networks'
+  },
+  contact: {
+    name: 'Name and surname',
+    city: 'City',
+    country: 'Country',
+    email: 'E-mail',
+    message: 'Message',
+    submit: 'Submit',
+    error: 'An error occurred trying to submit your message. Please try again later.'
   }
 }
