@@ -63,7 +63,7 @@ const computedArrowPosition = computed(() => {
         class="picture-arrow"
         :style="computedArrowPosition"
         aria-hidden="true">
-        <IconArrowDown />
+        <IconArrowLong />
       </div>
     </Transition>
   </component>
@@ -98,7 +98,7 @@ const computedArrowPosition = computed(() => {
     &-title {
       margin: 0;
       margin-top: var(--spacer-8);
-      font-size: var(--text-lg);
+      font-size: calc(var(--text-lg) * .75);
       font-family: var(--font-headline);
     }
 
@@ -120,9 +120,10 @@ const computedArrowPosition = computed(() => {
       width: 8vw;
       z-index: 1000;
       pointer-events: none;
-      transform: rotate(-90deg) translate(-50%, -50%);
+      transform: translate(-50%, -50%);
       transform-origin: top left;
       transition: opacity .25s ease;
+      color: var(--white);
 
       svg {
         height: auto;

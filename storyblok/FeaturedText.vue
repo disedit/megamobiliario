@@ -29,6 +29,7 @@ defineProps({ blok: Object })
     text-align: center;
     text-wrap: balance;
     font-size: var(--text-size);
+    font-family: var(--font-headline);
   }
 }
 </style>

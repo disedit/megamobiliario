@@ -32,10 +32,6 @@ defineProps({ blok: Object })
     margin: 0 calc(var(--site-padding) * -1);
     padding: 0 var(--site-padding);
     scroll-snap-type: x mandatory;
-
-    &:not(:has(.bento-overflows)) {
-      background: red;
-    }
   }
 
   .bento-item {

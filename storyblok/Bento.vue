@@ -54,21 +54,6 @@ defineProps({ blok: Object })
     aspect-ratio: 9 / 16;
   }
 
-  &-overflows {
-    .bento-header {
-      max-width: var(--container-max-width);
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 var(--site-padding);
-    }
-
-    .bento-container {
-      max-width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
   &-offset {
     overflow: hidden;
 
@@ -78,6 +63,25 @@ defineProps({ blok: Object })
 
     .bento-row:nth-child(even) {
       translate: 10% 0;
+    }
+  }
+}
+
+@include media('>=md') {
+  .bento {
+    &-overflows {
+      .bento-header {
+        max-width: var(--container-max-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 var(--site-padding);
+      }
+
+      .bento-container {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
 }
