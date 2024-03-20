@@ -51,6 +51,7 @@ const active = computed(() => {
   position: relative;
 
   &-label {
+    appearance: none;
     position: absolute;
     font-size: var(--text-md);
     top: 1.15rem;

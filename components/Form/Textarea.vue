@@ -42,6 +42,7 @@ const value = computed({
   position: relative;
 
   &-field {
+    appearance: none;
     display: block;
     border: 1.5px var(--white) solid;
     background: transparent;

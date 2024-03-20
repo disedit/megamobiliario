@@ -99,9 +99,11 @@ const config = await useConfig()
 
   &-logo {
     grid-area: logo;
+    display: flex;
+    align-items: center;
 
     svg {
-      height: 4rem;
+      height: 3.5rem;
     }
   }
 

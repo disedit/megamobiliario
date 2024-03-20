@@ -44,7 +44,7 @@ const submit = async () => {
   <form
     v-if="!submitted"
     @submit.prevent="submit"
-    class="contact-form"
+    :class="['contact-form', { submitting }]"
   >
     <FormInput
       name="name"
@@ -109,7 +109,7 @@ const submit = async () => {
     text-align: right;
   }
 
-  &-submitted {
+  &-message {
     border: 1.5px var(--white) solid;
     padding: var(--spacer-6);
 
@@ -121,6 +121,10 @@ const submit = async () => {
     :deep(p:last-child) {
       margin-bottom: 0;
     }
+  }
+
+  &.submitting {
+    opacity: .5;
   }
 }
 

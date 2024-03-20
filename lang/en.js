@@ -17,5 +17,10 @@ export default {
     message: 'Message',
     submit: 'Submit',
     error: 'An error occurred trying to submit your message. Please try again later.'
+  },
+  password: {
+    label: 'Password',
+    error: 'The entered password is not correct. Please sign up to receive your password on your e-mail.',
+    button: 'Enter'
   }
 }

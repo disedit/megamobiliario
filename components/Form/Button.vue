@@ -12,6 +12,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .button {
+  appearance: none;
   border: 1.5px var(--white) solid;
   color: var(--white);
   background: transparent;
@@ -22,10 +23,6 @@ const props = defineProps({
   &:hover {
     cursor: pointer;
     background: rgba(255, 255, 255, .15);
-  }
-
-  &:disabled {
-    opacity: .5;
   }
 }
 </style>

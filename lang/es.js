@@ -17,5 +17,10 @@ export default {
     message: 'Mensaje',
     submit: 'Enviar',
     error: 'Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde. Disculpa las molestias.'
+  },
+  password: {
+    label: 'Contraseña',
+    error: 'La contraseña introducida no es correcta. Por favor, regístrate para recibirla en tu correo electrónico.',
+    button: 'Entrar'
   }
 }
