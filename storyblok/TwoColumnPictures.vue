@@ -6,7 +6,7 @@
     v-editable="blok"
     :class="[
       'two-column-pictures', `bg-${blok.background_color}`, `text-${blok.text_color}`,
-      { 'full-height': blok.full_height, 'invert': blok.invert }
+      { 'full-height': blok.full_height, 'invert': blok.invert, 'even-columns': blok.even_columns }
     ]"
   >
       <div class="container">
@@ -21,13 +21,13 @@
             />
           </div>
           <div
-            v-if="blok.right_column_text"
+            v-if="blok.right_column_block.length > 0"
             :class="[
-              'column-text', `text-${blok.text_size}`,
+              'column-blocks',
               { 'md:hidden': blok.hide_right_column_on_mobile }
             ]"
           >
-            {{ blok.right_column_text }}
+            <StoryblokComponent :blok="blok.right_column_block[0]" />
           </div>
           <div
             v-else-if="blok.right_column_picture?.filename"
@@ -67,14 +67,9 @@
     }
   }
 
-  .column-text {
+  .column-blocks {
     display: flex;
-    font-weight: bold;
-    font-family: var(--font-headline);
-    font-size: var(--text-size);
-    line-height: 1;
-    align-items: flex-end;
-    white-space: pre-wrap;
+    padding-right: var(--spacer-4);
   }
 
   &.full-height {
@@ -97,6 +92,14 @@
     .right-column-text {
       grid-column: 1;
       grid-row: 1;
+    }
+  }
+}
+
+@include media('>=md') {
+  .two-column-pictures.even-columns {
+    .two-column-pictures-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
