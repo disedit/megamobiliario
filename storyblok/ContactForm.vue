@@ -44,6 +44,7 @@ defineProps({ blok: Object })
 
   &-text {
     max-width: 50ch;
+    line-height: 1.5;
 
     p {
       margin: 0;

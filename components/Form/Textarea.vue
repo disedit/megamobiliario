@@ -60,6 +60,10 @@ const value = computed({
 
     &:focus {
       outline: 0;
+
+      &::placeholder {
+        opacity: .5;
+      }
     }
 
     &:autofill,

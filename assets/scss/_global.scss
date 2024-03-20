@@ -14,12 +14,19 @@ body {
 }
 
 a {
-  color: var(--primary);
+  color: inherit;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: .25s ease;
 
   &:focus-visible {
     position: relative;
     outline: 3px var(--black) solid;
     z-index: 10;
+  }
+
+  &.dims:hover {
+    opacity: .6;
   }
 }
 

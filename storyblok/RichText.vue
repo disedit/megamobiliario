@@ -1,9 +1,5 @@
 <script setup>
-const props = defineProps({ blok: Object })
-
-const content = computed(() => {
-  return renderRichText(props.blok.text)
-})
+defineProps({ blok: Object })
 </script>
 
 <template>
@@ -12,12 +8,12 @@ const content = computed(() => {
     :class="['rich-text', `color-${blok.color}`, { 'centered': blok.centered }]"
   >
     <div class="container">
-      <div v-html="content" class="rich-text-content" />
+      <UtilRichText :content="blok.text" class="rich-text-content" />
     </div>
   </section>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .rich-text {
   font-size: var(--text-base);
   background-color: var(--bg-color);
@@ -25,6 +21,7 @@ const content = computed(() => {
 
   &-content {
     max-width: 70ch;
+    line-height: 1.5;
   }
 
   &.centered {

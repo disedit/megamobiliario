@@ -12,5 +12,17 @@ const renderedContent = computed(() => {
 </script>
 
 <template>
-  <div v-html="renderedContent" />
+  <div v-html="renderedContent" class="rich-text-rendered" />
 </template>
+
+<style lang="scss">
+.rich-text-rendered {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+  }
+
+  a:hover {
+    opacity: .6;
+  }
+}
+</style>
