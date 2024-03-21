@@ -51,7 +51,7 @@ const active = computed(() => {
 .form-input {
   position: relative;
   --variant-color: var(--white);
-  --variant-autofill: #6e4734;
+  --variant-autofill: #95502f;
   --variant-text: var(--white);
 
   &-label {
@@ -95,7 +95,7 @@ const active = computed(() => {
 
 .variant-beige {
   --variant-color: var(--beige);
-  --variant-autofill: yellow;
+  --variant-autofill: #f2f8ff;
   --variant-text: var(--black);
 }
 </style>
