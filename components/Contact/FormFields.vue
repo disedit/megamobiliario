@@ -48,26 +48,26 @@ const submit = async () => {
   >
     <FormInput
       name="name"
-      :label="$t('contact.name')"
+      :label="$t('fields.name')"
       required
       v-model="form.name"
       class="field-spans-2"
     />
     <FormInput
       name="city"
-      :label="$t('contact.city')"
+      :label="$t('fields.city')"
       required
       v-model="form.city"
     />
     <FormInput
       name="country"
-      :label="$t('contact.country')"
+      :label="$t('fields.country')"
       required
       v-model="form.country"
     />
     <FormInput
       name="email"
-      :label="$t('contact.email')"
+      :label="$t('fields.email')"
       type="email"
       required
       v-model="form.email"
@@ -75,7 +75,7 @@ const submit = async () => {
     />
     <FormTextarea
       name="message"
-      :label="$t('contact.message')"
+      :label="$t('fields.message')"
       required
       v-model="form.message"
       class="field-spans-2"
@@ -85,13 +85,13 @@ const submit = async () => {
         :loading="submitting"
         type="submit"
       >
-        {{ $t('contact.submit') }}
+        {{ $t('fields.submit') }}
       </FormButton>
     </div>
   </form>
   <div v-else-if="error" class="contact-form-message">
     <div class="field-spans-2">
-      {{ $t('contact.error') }}
+      {{ $t('fields.error') }}
     </div>
   </div>
   <div v-else class="contact-form-message">

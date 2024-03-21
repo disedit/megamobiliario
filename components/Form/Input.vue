@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps({
+  variant: { type: String, default: 'white' },
   modelValue: { type: String, required: true },
   name: { type: String, required: true },
   label: { type: String, required: true },
@@ -26,7 +27,7 @@ const active = computed(() => {
 </script>
 
 <template>
-  <div :class="['form-input', { active }]">
+  <div :class="['form-input', `variant-${variant}`, { active }]">
     <label
       :for="name"
       class="form-input-label"
@@ -49,6 +50,9 @@ const active = computed(() => {
 <style lang="scss" scoped>
 .form-input {
   position: relative;
+  --variant-color: var(--white);
+  --variant-autofill: #6e4734;
+  --variant-text: var(--white);
 
   &-label {
     appearance: none;
@@ -58,15 +62,16 @@ const active = computed(() => {
     left: var(--spacer-3);
     transition: all .25s ease;
     pointer-events: none;
+    color: var(--variant-color);
   }
 
   &-field {
     display: block;
-    border: 1.5px var(--white) solid;
+    border: 1.5px var(--variant-color) solid;
     background: transparent;
     width: 100%;
     padding: var(--spacer-7) var(--spacer-3) var(--spacer-3);
-    color: var(--white);
+    color: var(--variant-text);
     font-family: inherit;
     font-size: var(--text-base);
 
@@ -76,7 +81,7 @@ const active = computed(() => {
 
     &:autofill,
     &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 100px #6e4734 inset!important;
+      -webkit-box-shadow: 0 0 0 100px var(--variant-autofill) inset !important;
     }
   }
 
@@ -86,5 +91,11 @@ const active = computed(() => {
       top: .6rem;
     }
   }
+}
+
+.variant-beige {
+  --variant-color: var(--beige);
+  --variant-autofill: yellow;
+  --variant-text: var(--black);
 }
 </style>

@@ -9,14 +9,22 @@ export default {
   footer: {
     socials: 'Nuestras RRSS'
   },
-  contact: {
+  fields: {
     name: 'Nombre y apellidos',
+    first_name: 'Nombre',
+    last_name: 'Apellidos',
     city: 'Ciudad',
     country: 'País',
+    company: 'Compañía',
+    role: 'Perfil',
     email: 'E-mail',
     message: 'Mensaje',
     submit: 'Enviar',
-    error: 'Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde. Disculpa las molestias.'
+    signup: 'Registrarse',
+    error: 'Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde. Disculpa las molestias.',
+    privacy_before: 'He leído y acepto la',
+    privacy_policy: 'política de privacidad',
+    privacy_after: 'y deseo subscribirme a la newsletter.'
   },
   password: {
     label: 'Contraseña',

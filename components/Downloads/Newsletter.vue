@@ -1,36 +1,151 @@
-<template>
-  <div id="mc_embed_shell">
-    <div id="mc_embed_signup">
-      <form action="https://disedit.us18.list-manage.com/subscribe/post?u=686aeeb4094e99ef5a5d4aa76&amp;id=32b856c080&amp;f_id=00cbc2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
-        <div id="mc_embed_signup_scroll">
-        <h2>Subscribe</h2>
-          <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-          <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-            <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required value=""></div>
-            <div class="mc-field-group"><label for="mce-FNAME">First Name </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-PROFESION">Profesión </label><input type="text" name="PROFESION" class=" text" id="mce-PROFESION" value=""></div>
-        <div id="mce-responses" class="clear foot">
-            <div class="response" id="mce-error-response" style="display: none;"></div>
-            <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-        <div aria-hidden="true" style="position: absolute; left: -5000px;">
-          <input type="text" name="b_686aeeb4094e99ef5a5d4aa76_32b856c080" tabindex="-1" value="">
-        </div>
-        <div class="optionalParent">
-            <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                <p style="margin: 0px auto;"><a href="http://eepurl.com/iLrZNc" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-            </div>
-        </div>
-      </div>
-      </form>
-    </div>
-  </div>
-</template>
+<script setup>
+defineProps({
+  privacyPolicy: { type: Object, required: true }
+})
 
-<script lang="ts" setup>
-
+const form = reactive({
+  first_name: '',
+  last_name: '',
+  company: '',
+  role: '',
+  city: '',
+  country: '',
+  email: '',
+  privacy: false
+})
 </script>
 
-<style>
+<template>
+  <form class="downloads-form">
+    <FormInput
+      name="first_name"
+      :label="$t('fields.first_name')"
+      required
+      variant="beige"
+      v-model="form.first_name"
+    />
+    <FormInput
+      name="last_name"
+      :label="$t('fields.last_name')"
+      required
+      variant="beige"
+      v-model="form.last_name"
+    />
+    <FormInput
+      name="company"
+      :label="$t('fields.company')"
+      required
+      variant="beige"
+      v-model="form.company"
+    />
+    <FormInput
+      name="role"
+      :label="$t('fields.role')"
+      required
+      variant="beige"
+      v-model="form.role"
+    />
+    <FormInput
+      name="city"
+      :label="$t('fields.city')"
+      required
+      variant="beige"
+      v-model="form.city"
+    />
+    <FormInput
+      name="country"
+      :label="$t('fields.country')"
+      required
+      variant="beige"
+      v-model="form.country"
+    />
+    <FormInput
+      name="email"
+      :label="$t('fields.email')"
+      type="email"
+      required
+      class="field-spans-2"
+      variant="beige"
+      v-model="form.email"
+    />
+    <div class="downloads-form-gdpr field-spans-2">
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          name="MMERGE3"
+          value="I have read and agree to the Terms and Conditions."
+          class="checkbox-input"
+          required
+        />
+        <span>
+          {{ $t('fields.privacy_before') }}
+          <a :href="privacyPolicy.cached_url" target="_blank" class="link-black-underlined terms">
+            {{ $t('fields.privacy_policy') }}
+          </a>
+          {{ $t('fields.privacy_after') }}
+        </span>
+      </label>
+    </div>
+    <div class="downloads-form-actions field-spans-2">
+      <FormButton type="submit" variant="blue">
+        {{ $t('fields.signup') }}
+      </FormButton>
+    </div>
+  </form>
+</template>
+
+<style lang="scss">
+.downloads-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacer-4);
+
+  &-gdpr {
+    font-size: var(--text-base);
+    margin-bottom: var(--spacer-4);
+  }
+}
+
+.field-spans-2 {
+  grid-column: span 2;
+}
+
+.checkbox-label {
+  display: flex;
+  gap: var(--spacer-3);
+}
+
+.checkbox-input {
+  appearance: none;
+  background-color: var(--white);
+  margin: 0;
+  font: inherit;
+  color: var(--beige);
+  width: 1.25em;
+  height: 1.25em;
+  border: 1.5px solid var(--beige);
+  border-radius: 0;
+  display: grid;
+  place-content: center;
+
+  &::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: .25s transform ease-in-out;
+    box-shadow: inset 1em 1em var(--beige);
+    border-radius: 100%;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--black);
+  }
+}
 
 </style>

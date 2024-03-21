@@ -9,14 +9,22 @@ export default {
   footer: {
     socials: 'Our social networks'
   },
-  contact: {
+  fields: {
     name: 'Name and surname',
+    first_name: 'Name',
+    last_name: 'Surname',
     city: 'City',
     country: 'Country',
+    company: 'Company',
+    role: 'Role',
     email: 'E-mail',
     message: 'Message',
     submit: 'Submit',
-    error: 'An error occurred trying to submit your message. Please try again later.'
+    signup: 'Sign up',
+    error: 'An error occurred trying to submit your message. Please try again later.',
+    privacy_before: 'I have read and accept the',
+    privacy_policy: 'Privacy Policy',
+    privacy_after: 'and wish to subscribe to the newsletter.'
   },
   password: {
     label: 'Password',
