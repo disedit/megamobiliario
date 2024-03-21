@@ -1,9 +1,41 @@
 <script setup>
-defineProps({ blok: Object })
+const props = defineProps({ blok: Object })
+
+const id = computed(() => {
+  return "grid-" + props.blok._uid
+})
+
+/* Animations */
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  if (props.blok.animate) {
+    $gsap.fromTo(`
+      #${id.value} .picture-thumbnail,
+      #${id.value} .picture-title,
+      #${id.value} .picture-date,
+      #${id.value} .picture-text
+    `, {
+      opacity: 0,
+      y: '10%'
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: .2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: `#${id.value}`,
+        start: 'top center'
+      }
+    })
+  }
+})
 </script>
 
 <template>
   <section
+    :id="id"
     v-editable="blok"
     :class="[
       'grid', `bg-${blok.background_color}`, `text-${blok.text_color}`, 'legoable',

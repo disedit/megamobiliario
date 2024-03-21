@@ -185,4 +185,12 @@ const computedArrowPosition = computed(() => {
       translate: 0 25%;
     }
   }
+
+  @include media('<lg') {
+    .picture {
+      &-title {
+        margin: var(--spacer-5) 0;
+      }
+    }
+  }
 </style>

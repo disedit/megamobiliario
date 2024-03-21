@@ -8,9 +8,10 @@ defineProps({ blok: Object })
     :class="['featured-text', `bg-${blok.background}`, `text-${blok.text_color}`, `text-${blok.text_size}`]"
   >
     <div class="container">
-      <p class="featured-text-content">
+      <p v-if="!blok.animate_text" class="featured-text-content">
         {{ blok.text }}
       </p>
+      <UtilAnimatedText v-else :text="blok.text" :duration="1" class="featured-text-content" />
     </div>
   </section>
 </template>
@@ -24,7 +25,7 @@ defineProps({ blok: Object })
   position: relative;
   padding: 10vh 0;
 
-  p {
+  &-content {
     max-width: 70ch;
     text-align: center;
     text-wrap: balance;

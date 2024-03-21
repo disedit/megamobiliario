@@ -18,7 +18,8 @@ const backgroundStyle = computed(() => {
     ]"
     :style="backgroundStyle">
     <h1 v-if="blok.heading" class="hero-heading">
-      <div class="hero-heading-content">{{ blok.heading }}</div>
+      <div class="hero-heading-content" v-if="!blok.animate_text">{{ blok.heading }}</div>
+      <UtilAnimatedText class="hero-heading-animated" v-else :text="blok.heading" />
     </h1>
     <p v-if="blok.subheading" class="hero-subheading">
       {{ blok.subheading }}
@@ -85,11 +86,24 @@ const backgroundStyle = computed(() => {
     display: flex;
     justify-content: center;
     padding: var(--site-padding);
+    animation: arrow 3s infinite;
 
     svg {
       height: 2.5rem;
       width: auto;
     }
+  }
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 </style>

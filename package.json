@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/image": "^1.4.0",
     "@storyblok/nuxt": "^6.0.4",
+    "gsap": "^3.12.5",
     "include-media": "^2.0.0",
     "marked": "^12.0.1",
     "vue": "^3.4.19",

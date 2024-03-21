@@ -7,7 +7,10 @@ defineProps({ blok: Object })
     v-editable="blok"
     :class="['headline', `text-${blok.text_size}`]"
   >
-    <component :is="blok.level" class="headline-text">{{ blok.headline }}</component>
+    <component :is="blok.level" class="headline-text">
+      <UtilAnimatedText v-if="blok.animate_text" :text="blok.headline" />
+      <span v-else>{{ blok.headline }}</span>
+    </component>
   </div>
 </template>
 

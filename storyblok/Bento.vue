@@ -1,9 +1,35 @@
 <script setup>
-defineProps({ blok: Object })
+const props = defineProps({ blok: Object })
+
+const id = computed(() => {
+  return "bento-" + props.blok._uid
+})
+
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  if (props.blok.animate) {
+    $gsap.fromTo(`#${id.value} .bento-item`, {
+      opacity: 0,
+      y: '10%'
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: .2,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: `#${id.value}`,
+        start: 'top bottom'
+      }
+    })
+  }
+})
 </script>
 
 <template>
   <section
+    :id="id"
     v-editable="blok"
     :class="[
       'bento',
