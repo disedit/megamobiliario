@@ -1,17 +1,14 @@
 <script setup>
 const props = defineProps({
+  id: { type: String, required: true },
   text: { type: String, required: true },
   duration: { type: Number, default: 2 }
-})
-
-const id = computed(() => {
-  return "text" + Math.random().toString(16).slice(2)
 })
 
 const { $gsap } = useNuxtApp()
 
 onMounted(() => {
-    $gsap.fromTo(`#${id.value} .word-inner`, {
+    $gsap.fromTo(`#text-${props.id} .word-inner`, {
       y: '100%'
     }, {
       y: 0,
@@ -19,7 +16,7 @@ onMounted(() => {
       stagger: .1,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: `#${id.value}`,
+        trigger: `#text-${props.id}`,
         start: 'top bottom'
       }
     })
@@ -27,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="animated-text" :id="id">
+  <div class="animated-text" :id="`text-${id}`">
     <div v-for="(line, l) in text.split('\n')" :key="l" class="line">
       <span v-for="(word, w) in line.split(' ')" :key="w" class="word">
         <span class="word-inner">{{ word }}</span>

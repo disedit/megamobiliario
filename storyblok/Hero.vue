@@ -18,8 +18,18 @@ const backgroundStyle = computed(() => {
     ]"
     :style="backgroundStyle">
     <h1 v-if="blok.heading" class="hero-heading">
-      <div class="hero-heading-content" v-if="!blok.animate_text">{{ blok.heading }}</div>
-      <UtilAnimatedText class="hero-heading-animated" v-else :text="blok.heading" />
+      <div
+        v-if="!blok.animate_text"
+        class="hero-heading-content"
+      >
+        {{ blok.heading }}
+      </div>
+      <UtilAnimatedText
+        v-else
+        :id="blok._uid"
+        :text="blok.heading"
+        class="hero-heading-animated"
+      />
     </h1>
     <p v-if="blok.subheading" class="hero-subheading">
       {{ blok.subheading }}

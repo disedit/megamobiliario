@@ -8,7 +8,7 @@ defineProps({ blok: Object })
     :class="['headline', `text-${blok.text_size}`]"
   >
     <component :is="blok.level" class="headline-text">
-      <UtilAnimatedText v-if="blok.animate_text" :text="blok.headline" />
+      <UtilAnimatedText v-if="blok.animate_text" :text="blok.headline" :id="blok._uid" />
       <span v-else>{{ blok.headline }}</span>
     </component>
   </div>

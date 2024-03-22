@@ -11,7 +11,13 @@ defineProps({ blok: Object })
       <p v-if="!blok.animate_text" class="featured-text-content">
         {{ blok.text }}
       </p>
-      <UtilAnimatedText v-else :text="blok.text" :duration="1" class="featured-text-content" />
+      <UtilAnimatedText
+        v-else
+        :id="blok._uid"
+        :text="blok.text"
+        :duration="1"
+        class="featured-text-content"
+      />
     </div>
   </section>
 </template>
