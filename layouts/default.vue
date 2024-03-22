@@ -24,7 +24,7 @@ const head = useLocaleHead({
 }
 
 .nuxt-loading-indicator {
-  background: var(--blue);
+  background: var(--black);
   top: 0;
 }
 </style>

@@ -26,11 +26,11 @@ const ogTitle = page.seo_title || title
 const description = page.seo_description || config.seo_description
 const ogImage = page.seo_picture?.filename || config.seo_picture?.filename
 const keywords = page.seo_keywords
-const themeColor = page.theme_color?.value || config.theme_color?.value
+const themeColor = useColor(page.nav_color || 'white')
 const twitterSite = config.twitter_account
 useServerSeoMeta({
   title,
-  ogTitle: title,
+  ogTitle,
   description,
   ogDescription: description,
   ogImage,
@@ -50,6 +50,7 @@ useHead({ title })
     <SiteNav
       :light="story.content.light_nav"
       :color="story.content.nav_color"
+      :color-mobile="story.content.nav_color_mobile"
     />
     <main>
       <StoryblokComponent

@@ -1,16 +1,17 @@
 <script setup>
-const localePath = useLocalePath()
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const emit = defineEmits(['change'])
 </script>
 
 <template>
-  <ul class="language">
+  <ul class="language" aria-label="Idioma / Language">
     <li v-for="lang in locales" :key="lang">
       <SiteUnderlinedLink
         :to="switchLocalePath(lang.code)"
         :title="lang.name"
         :class="{ 'active': locale === lang.code }"
+        @click="emit('change')"
       >
         {{ lang.code }}
       </SiteUnderlinedLink>

@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   light: {
     type: Boolean,
     default: false
@@ -7,6 +7,10 @@ defineProps({
   color: {
     type: String,
     default: 'white'
+  },
+  colorMobile: {
+    type: String,
+    default: 'brown'
   }
 })
 
@@ -20,18 +24,18 @@ function isActive (link) {
 
 /* Mobile menu */
 const menuOpen = ref(false)
-const clickedIndex = ref(0)
+const navColor = useColor(props.color)
+const navColorMobile = useColor(props.colorMobile)
 
 const showMenu = () => {
   menuOpen.value = true
   document.documentElement.classList.add('menu-open')
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', '')
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', navColorMobile)
 }
-const hideMenu = (index) => {
+const hideMenu = () => {
   menuOpen.value = false
-  clickedIndex.value = index || 0
   document.documentElement.classList.remove('menu-open')
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', '')
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', navColor)
 }
 
 /* Menu animations */
@@ -57,7 +61,7 @@ function onEnter(el, done) {
     ease: 'power4.out',
     stagger: .1,
     onComplete: done
-  })
+  }, '-=.3')
 }
 
 function onLeave (el, done) {
@@ -75,7 +79,7 @@ function onLeave (el, done) {
     duration: .5,
     ease: 'power4.in',
     onComplete: done
-  })
+  }, '-=.3')
 }
 
 function onEnterCancelled() {
@@ -141,42 +145,45 @@ watch(y, (currentScrollPosition) => {
       </button>
     </div>
   </header>
-  <Transition
-    @before-enter="beforeEnter"
-    @enter="onEnter"
-    @enter-cancelled="onEnterCancelled"
-    @leave="onLeave"
-    @leave-cancelled="onLeaveCancelled"
-  >
-    <nav
-      id="mainNav"
-      v-if="menuOpen"
-      class="header-mobile-menu"
-      aria-label="Main navigation"
+  <Teleport to="#teleports">
+    <Transition
+      @before-enter="beforeEnter"
+      @enter="onEnter"
+      @enter-cancelled="onEnterCancelled"
+      @leave="onLeave"
+      @leave-cancelled="onLeaveCancelled"
     >
-      <button
-          class="header-burger"
-          @click="hideMenu"
-          aria-label="Cerrar menú"
-          aria-controls="mainNav"
-          :aria-expanded="menuOpen ? 'true' : 'false'"
-        >
-        <IconClose />
-      </button>
-      <ul>
-        <li v-for="blok in config.header_menu" :key="blok._uid" class="animate">
-          <NuxtLink
-            v-if="blok.link?.id && blok.link?.story"
-            :to="localePath(`/${blok.link?.story?.url}`)"
-            :class="{ 'active': isActive(blok.link) }"
-            @click="hideMenu(i)"
+      <nav
+        id="mainNav"
+        v-if="menuOpen"
+        :class="['header-mobile-menu', `color-${colorMobile}`]"
+        aria-label="Main navigation"
+      >
+        <button
+            class="header-burger"
+            @click="hideMenu"
+            aria-label="Cerrar menú"
+            aria-controls="mainNav"
+            :aria-expanded="menuOpen ? 'true' : 'false'"
           >
-            {{ blok.label }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </nav>
-  </Transition>
+          <IconClose />
+        </button>
+        <ul>
+          <li v-for="blok in config.header_menu" :key="blok._uid" class="animate">
+            <NuxtLink
+              v-if="blok.link?.id && blok.link?.story"
+              :to="localePath(`/${blok.link?.story?.url}`)"
+              :class="{ 'active': isActive(blok.link) }"
+              @click="hideMenu"
+            >
+              {{ blok.label }}
+            </NuxtLink>
+          </li>
+        </ul>
+        <SiteLanguage class="header-language animate" @change="hideMenu" />
+      </nav>
+    </Transition>
+  </Teleport>
 </template>
 
 <style lang="scss" scoped>
@@ -243,14 +250,14 @@ watch(y, (currentScrollPosition) => {
       display: flex;
       position: fixed;
       inset: 0;
-      background: var(--brown);
+      background: var(--bg-color);
       z-index: 1100;
       padding: var(--site-padding);
       flex-direction: column;
       justify-content: center;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
-      color: var(--white);
+      color: var(--text-color);
 
       ul {
         margin: 0;
@@ -280,6 +287,10 @@ watch(y, (currentScrollPosition) => {
         svg {
           height: 1.5rem;
         }
+      }
+
+      .header-language {
+        margin: var(--spacer-5) auto 0 auto;
       }
     }
 
