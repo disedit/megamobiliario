@@ -109,6 +109,23 @@
     &-grid {
       grid-template-columns: 1fr;
     }
+
+    &.invert {
+      .two-column-pictures-grid {
+        grid-template-columns: 1fr;
+
+        .left-column-picture {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        
+        .right-column-picture,
+        .right-column-text {
+          grid-column: 1;
+          grid-row: 2;
+        }
+      }
+    }
   }
 }
 </style>

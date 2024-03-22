@@ -5,7 +5,7 @@
   </svg>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .cls-1 {
   fill: none;
   stroke: #fafbff;

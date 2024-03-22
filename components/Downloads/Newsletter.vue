@@ -127,6 +127,7 @@ const form = reactive({
   border-radius: 0;
   display: grid;
   place-content: center;
+  flex-shrink: 0;
 
   &::before {
     content: "";
@@ -148,4 +149,13 @@ const form = reactive({
   }
 }
 
+@include media('<md') {
+  .downloads-form {
+    grid-template-columns: 1fr;
+  }
+
+  .field-spans-2 {
+    grid-column: span 1;
+  }
+}
 </style>

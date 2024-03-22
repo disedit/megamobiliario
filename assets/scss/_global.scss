@@ -51,3 +51,7 @@ a {
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
   @include visually-hidden();
 }
+
+.menu-open {
+  overflow: hidden;
+}

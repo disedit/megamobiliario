@@ -29,4 +29,13 @@ defineProps({ blok: Object })
     }
   }
 }
+
+@include media('<md') {
+  .newsletter-form {
+    &-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacer-4);
+    }
+  }
+}
 </style>

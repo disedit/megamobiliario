@@ -4,10 +4,10 @@ defineProps({ blok: Object })
 
 <template>
   <div v-editable="blok" class="split-text">
-    <div :class="['split-text-above', `text-${blok.text_above_color}`, `text-${blok.text_above_size}`]">
+    <div v-if="blok.text_above" :class="['split-text-above', `text-${blok.text_above_color}`, `text-${blok.text_above_size}`]">
       {{ blok.text_above }}
     </div>
-    <div :class="['split-text-below', `text-${blok.text_below_color}`, `text-${blok.text_below_size}`]">
+    <div v-if="blok.text_below" :class="['split-text-below', `text-${blok.text_below_color}`, `text-${blok.text_below_size}`]">
       {{ blok.text_below }}
     </div>
   </div>
@@ -18,6 +18,7 @@ defineProps({ blok: Object })
   display: flex;
   flex-direction: column;
   white-space: pre-wrap;
+  gap: var(--site-padding);
 
   & > div {
     font-size: var(--text-size);

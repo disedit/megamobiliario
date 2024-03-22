@@ -113,4 +113,13 @@ function checkPassword () {
     align-items: center;
   }
 }
+
+@include media('<md') {
+  .downloads-password {
+    &-form {
+      grid-template-columns: 1fr auto;
+      gap: var(--spacer-4);
+    }
+  }
+}
 </style>

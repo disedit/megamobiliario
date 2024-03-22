@@ -18,6 +18,74 @@ function isActive (link) {
   return link.story?.slug === slug[0]
 }
 
+/* Mobile menu */
+const menuOpen = ref(false)
+const clickedIndex = ref(0)
+
+const showMenu = () => {
+  menuOpen.value = true
+  document.documentElement.classList.add('menu-open')
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', '')
+}
+const hideMenu = (index) => {
+  menuOpen.value = false
+  clickedIndex.value = index || 0
+  document.documentElement.classList.remove('menu-open')
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', '')
+}
+
+/* Menu animations */
+const { $gsap } = useNuxtApp()
+let timeline
+
+function beforeEnter(el) {
+  $gsap.set(el, { y: '-100%' })
+}
+
+function onEnter(el, done) {
+  $gsap.set('.header-mobile-menu .animate', { y: '100%', opacity: 0 })
+  timeline = $gsap.timeline()
+
+  timeline.to(el, {
+    y: 0,
+    duration: .5,
+    ease: 'power4.out',
+  }).to('.header-mobile-menu .animate', {
+    y: 0,
+    opacity: 1,
+    duration: .25,
+    ease: 'power4.out',
+    stagger: .1,
+    onComplete: done
+  })
+}
+
+function onLeave (el, done) {
+  timeline = $gsap.timeline()
+  timeline.to('.header-mobile-menu .animate', {
+    y: '100%',
+    opacity: 0,
+    duration: .25,
+    stagger: {
+      amount: .25,
+      from: 'end'
+    },
+  }).to(el, {
+    y: '-100%',
+    duration: .5,
+    ease: 'power4.in',
+    onComplete: done
+  })
+}
+
+function onEnterCancelled() {
+  timeline && timeline.kill()
+}
+
+function onLeaveCancelled() {
+  timeline && timeline.kill()
+}
+
 /* Hide/Show nav bar on scorll */
 const { y } = useWindowScroll()
 const showNavbar = ref(true)
@@ -49,7 +117,7 @@ watch(y, (currentScrollPosition) => {
         <span class="visually-hidden">Megamobiliario</span>
         <SiteLogo />
       </NuxtLink>
-      <nav v-if="config.header_menu" class="header-menu">
+      <nav v-if="config.header_menu" class="header-menu" aria-label="Main navigation">
         <ul>
           <li v-for="blok in config.header_menu" :key="blok._uid">
             <SiteUnderlinedLink
@@ -62,8 +130,53 @@ watch(y, (currentScrollPosition) => {
         </ul>
       </nav>
       <SiteLanguage class="header-language" />
+      <button
+        class="header-burger"
+        @click="showMenu"
+        aria-label="Abrir menú"
+        aria-controls="mainNav"
+        :aria-expanded="menuOpen ? 'true' : 'false'"
+      >
+        <IconBurger />
+      </button>
     </div>
   </header>
+  <Transition
+    @before-enter="beforeEnter"
+    @enter="onEnter"
+    @enter-cancelled="onEnterCancelled"
+    @leave="onLeave"
+    @leave-cancelled="onLeaveCancelled"
+  >
+    <nav
+      id="mainNav"
+      v-if="menuOpen"
+      class="header-mobile-menu"
+      aria-label="Main navigation"
+    >
+      <button
+          class="header-burger"
+          @click="hideMenu"
+          aria-label="Cerrar menú"
+          aria-controls="mainNav"
+          :aria-expanded="menuOpen ? 'true' : 'false'"
+        >
+        <IconClose />
+      </button>
+      <ul>
+        <li v-for="blok in config.header_menu" :key="blok._uid" class="animate">
+          <NuxtLink
+            v-if="blok.link?.id && blok.link?.story"
+            :to="localePath(`/${blok.link?.story?.url}`)"
+            :class="{ 'active': isActive(blok.link) }"
+            @click="hideMenu(i)"
+          >
+            {{ blok.label }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </nav>
+  </Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -125,11 +238,101 @@ watch(y, (currentScrollPosition) => {
         color: inherit;
       }
     }
+
+    &-mobile-menu {
+      display: flex;
+      position: fixed;
+      inset: 0;
+      background: var(--brown);
+      z-index: 1100;
+      padding: var(--site-padding);
+      flex-direction: column;
+      justify-content: center;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      color: var(--white);
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        a {
+          display: block;
+          text-align: center;
+          text-decoration: none;
+          color: inherit;
+          font-size: var(--text-lg);
+          padding: var(--spacer-3);
+        }
+      }
+
+      .header-burger {
+        position: absolute;
+        top: var(--site-padding);
+        right: var(--site-padding);
+
+        svg {
+          height: 1.5rem;
+        }
+      }
+    }
+
+    &-burger {
+      appearance: none;
+      background-color: transparent;
+      border: 0;
+      padding: var(--spacer-4);
+      margin: 0 calc(var(--spacer-4) * -1);
+      color: inherit;
+      cursor: pointer;
+
+      svg {
+        width: 2em;
+      }
+    }
   }
 
-  @include media('<md') {
+  @include media('>=xl') {
     .header {
-      display: none;
+      &-burger {
+        display: none;
+      }
+
+      &-mobile-menu {
+        display: none;
+      }
+    }
+  }
+
+  @include media('<xl') {
+    .header {
+      &-logo svg {
+        height: 2rem;
+      }
+
+      &-navbar {
+        align-items: center;
+      }
+
+      &-menu {
+        display: none;
+      }
+
+      &-language {
+        margin-left: auto;
+        padding-left: 0;
+        margin-right: var(--spacer-7);
+      }
+
+      &--scrolled {
+        --spacer-5: .5rem;
+      }
     }
   }
 </style>

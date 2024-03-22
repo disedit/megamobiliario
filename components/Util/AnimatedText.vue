@@ -42,7 +42,7 @@ onMounted(() => {
 
     &-inner {
       display: block;
-      transform: translateY(50%);
+      transform: translateY(100%);
     }
   }
 </style>
