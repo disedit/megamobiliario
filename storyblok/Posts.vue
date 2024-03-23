@@ -9,13 +9,27 @@ const id = computed(() => {
 const { locale } = useI18n()
 const version = useEnvironment()
 const storyblokApi = useStoryblokApi()
+
+const specificPosts = {
+  by_uuids_ordered: props.blok.posts.join(',')
+}
+
+const autopopulate = {
+  starts_with: props.blok.autopopulate,
+  per_page: props.blok.autopopulate_limit || 3,
+  sort_by: 'position:desc,sort_by_date,created_at:desc',
+  is_startpage: false
+}
+
+const filter = props.blok.posts.length > 0 ? specificPosts : autopopulate
+
 const { data: postsData } = await useAsyncData(
   'posts_' + props.blok._uid,
   async () => await storyblokApi.get(`cdn/stories`, {
     version,
     language: locale.value,
-    by_uuids_ordered: props.blok.posts.join(','),
-    excluding_fields: 'blocks,light_nav,nav_color_keywords,nav_color_mobile'
+    excluding_fields: 'blocks,light_nav,nav_color_keywords,nav_color_mobile',
+    ...filter
   })
 )
 const posts = computed(() => {
@@ -27,9 +41,11 @@ const posts = computed(() => {
       cached_url: post.full_slug,
     },
     picture: post.content.post_thumbnail || post.content.seo_picture,
+    picture_hover: post.content.post_thumbnail_hover,
     title: post.content.post_title || post.content.title,
     date: post.content.post_date,
-    text: post.content.post_description || post.content.seo_description
+    text: post.content.post_description || post.content.seo_description,
+    arrow_on_hover: props.blok.arrow_on_hover
   }))
 })
 

@@ -1,5 +1,11 @@
 <script setup>
 const config = await useConfig()
+
+const legalNotice = computed(() => {
+  const today = new Date()
+  const currentYear = today.getFullYear()
+  return config.legal_notice.replaceAll('{currentYear}', currentYear)
+})
 </script>
 
 <template>
@@ -43,7 +49,7 @@ const config = await useConfig()
             :alt="logo.alt"
           />
         </div>
-        <UtilRichText class="footer-legal" :content="config.legal_notice" />
+        <UtilMarked class="footer-legal" :content="legalNotice" />
       </div>
     </div>
   </footer>

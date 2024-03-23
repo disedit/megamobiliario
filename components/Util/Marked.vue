@@ -14,5 +14,17 @@ const text = computed(() => {
 </script>
 
 <template>
-  <div v-html="text" />
+  <div class="marked-text-rendered" v-html="text" />
 </template>
+
+<style lang="scss">
+.marked-text-rendered {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+  }
+
+  a:hover {
+    opacity: .6;
+  }
+}
+</style>

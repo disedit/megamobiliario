@@ -26,7 +26,7 @@ const ogTitle = page.seo_title || title
 const description = page.seo_description || page.post_description || config.seo_description
 const ogImage = page.seo_picture?.filename || page.post_thumbnail?.filename || config.seo_picture?.filename
 const keywords = page.seo_keywords
-const themeColor = useColor(page.nav_color || 'white')
+const themeColor = page.theme_color?.value || useColor(page.nav_color || 'white')
 const twitterSite = config.twitter_account
 useServerSeoMeta({
   title,
