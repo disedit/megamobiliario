@@ -105,13 +105,13 @@ const computedArrowPosition = computed(() => {
     &-date {
       margin: 0;
       margin-top: var(--spacer-1);
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
     }
 
     &-text {
       margin: 0;
       margin-top: var(--spacer-4);
-      font-size: var(--text-md);
+      font-size: var(--text-base);
       line-height: 1.1;
     }
 
@@ -191,6 +191,12 @@ const computedArrowPosition = computed(() => {
       &-title {
         margin: var(--spacer-5) 0;
       }
+    }
+  }
+
+  @media (hover: none) {
+    .picture-arrow {
+      display: none;
     }
   }
 </style>

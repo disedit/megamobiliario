@@ -1,4 +1,5 @@
 export const useDate = (date) => {
+  if (!date) return ''
   const { locale, t } = useI18n()
   const thisDate = new Date(date.replace(/\s/, 'T'))
 

@@ -74,6 +74,7 @@ const active = computed(() => {
     color: var(--variant-text);
     font-family: inherit;
     font-size: var(--text-base);
+    border-radius: 0;
 
     &:focus {
       outline: 0;

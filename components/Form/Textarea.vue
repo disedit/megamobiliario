@@ -52,6 +52,7 @@ const value = computed({
     font-family: inherit;
     font-size: var(--text-base);
     height: 10rem;
+    border-radius: 0;
 
     &::placeholder {
       color: var(--white);

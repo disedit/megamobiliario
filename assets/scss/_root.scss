@@ -47,7 +47,7 @@
 /* Fluid font size variables, for browsers that support clamp */
 @supports (font-size: clamp(1rem, 1vw, 1rem)) {
   :root {
-    --text-sm: clamp(0.8rem, -0.02vw + 0.8rem, 0.79rem);
+    --text-sm: clamp(0.75rem, 0.05vw + .85rem, 1rem);
 		--text-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
 		--text-md: clamp(1.2rem, 0.9vw + 1rem, 1.5rem);
 		--text-lg: clamp(1.56rem, 2vw + 1rem, 2.6rem);
@@ -59,7 +59,7 @@
 /* Fallback variables for browsers that don't support clamp */
 @supports not (font-size: clamp(1rem, 1vw, 1rem)) {
   :root {
-    --text-sm: 0.8rem;
+    --text-sm: 0.85rem;
 		--text-base: 1rem;
 		--text-md: 1.25rem;
 		--text-lg: 1.56rem;
@@ -69,7 +69,7 @@
   }
   @media screen and (min-width: 1280px) {
     :root {
-      --text-sm: 0.79rem;
+      --text-sm: 0.85rem;
 			--text-base: 1.19rem;
 			--text-md: 1.78rem;
 			--text-lg: 2.67rem;

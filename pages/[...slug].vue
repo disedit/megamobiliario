@@ -23,8 +23,8 @@ if (!story.value) {
 const siteName = config.site_name
 const title = slug && slug.length > 0 ? `${page.title || page.name} - ${siteName}` : siteName
 const ogTitle = page.seo_title || title
-const description = page.seo_description || config.seo_description
-const ogImage = page.seo_picture?.filename || config.seo_picture?.filename
+const description = page.seo_description || page.post_description || config.seo_description
+const ogImage = page.seo_picture?.filename || page.post_thumbnail?.filename || config.seo_picture?.filename
 const keywords = page.seo_keywords
 const themeColor = useColor(page.nav_color || 'white')
 const twitterSite = config.twitter_account
