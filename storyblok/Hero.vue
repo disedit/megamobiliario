@@ -7,6 +7,12 @@ const backgroundStyle = computed(() => {
   const imgUrl = img(props.blok.background_image.filename)
   return { backgroundImage: `url('${imgUrl}')` }
 })
+
+const { y: scrollY } = useWindowScroll()
+
+function scrollPage () {
+  scrollY.value = window.innerHeight
+}
 </script>
 
 <template>
@@ -34,8 +40,10 @@ const backgroundStyle = computed(() => {
     <p v-if="blok.subheading" class="hero-subheading">
       {{ blok.subheading }}
     </p>
-    <div v-if="blok.show_arrow" class="hero-arrow">
-      <IconArrowDown />
+    <div v-if="blok.show_arrow" class="hero-arrow" aria-hidden="true">
+      <button @click="scrollPage">
+        <IconArrowDown />
+      </button>
     </div>
   </section>
 </template>
@@ -101,6 +109,14 @@ const backgroundStyle = computed(() => {
     svg {
       height: 2.5rem;
       width: auto;
+    }
+
+    button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
     }
   }
 }

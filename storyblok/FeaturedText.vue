@@ -32,7 +32,7 @@ defineProps({ blok: Object })
   padding: 10vh 0;
 
   &-content {
-    max-width: 70ch;
+    max-width: 1900px;
     text-align: center;
     text-wrap: balance;
     font-size: var(--text-size);

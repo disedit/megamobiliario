@@ -107,7 +107,7 @@ onMounted(() => {
  
 <style lang="scss" scoped>
 .grid {
-  padding: var(--spacer-10) 0;
+  padding: var(--spacer-10) 0 var(--spacer-14);
 
   &-content {
     display: grid;

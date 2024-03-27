@@ -90,12 +90,18 @@ const date = useDate(props.blok.date)
         line-height: 1;
       }
     }
+
+    :deep(p) {
+      margin-top: 0;
+    }
   }
 }
 
 .legoable .text,
 .legoable .text .container {
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
 }
 
 @include media('<md') {

@@ -23,6 +23,7 @@ defineProps({ blok: Object })
 
   .container {
     max-width: 1500px;
+    padding: var(--spacer-16) 0;
   }
 
   &-grid {

@@ -25,6 +25,7 @@ defineProps({ blok: Object })
 
   .container {
     width: fit-content;
+    padding: 0 0 var(--spacer-16);
   }
 
   :deep(.rich-text .container) {

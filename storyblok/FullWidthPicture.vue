@@ -6,7 +6,10 @@ defineProps({ blok: Object })
   <section
     v-editable="blok"
     :class="['full-width-picture', { 'full-height': blok.full_height }]"
-    :style="{ '--picture-height': blok.fixed_height }"
+    :style="{
+      '--picture-height': blok.fixed_height,
+      '--picture-align': blok.align
+    }"
   >
     <NuxtPicture
       v-if="blok.picture?.filename"
@@ -30,6 +33,7 @@ defineProps({ blok: Object })
     width: 100%;
     object-fit: cover;
     height: var(--picture-height, auto);
+    object-position: var(--picture-align);
   }
 
   &.full-height {

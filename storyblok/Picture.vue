@@ -13,8 +13,7 @@ const { internalLink } = useLinks()
 const date = useDate(props.blok.date)
 
 /* Arrow on hover */
-const target = ref(null)
-const { isOutside } = useMouseInElement(target)
+const hovering = ref(false)
 const { x, y } = useMouse({ type: 'client' })
 const computedArrowPosition = computed(() => {
   return {
@@ -22,7 +21,6 @@ const computedArrowPosition = computed(() => {
     top: `${y.value}px`
   }
 })
-
 </script>
 
 <template>
@@ -34,7 +32,7 @@ const computedArrowPosition = computed(() => {
     :class="['picture', { 'arrow-on-hover': blok.arrow_on_hover }]"
     v-editable="blok"
   >
-    <div class="picture-thumbnail" ref="target">
+    <div class="picture-thumbnail" @mouseenter="hovering = true" @mouseleave="hovering = false">
       <NuxtImg
         v-if="blok.picture?.filename"
         :src="blok.picture.filename"
@@ -59,7 +57,7 @@ const computedArrowPosition = computed(() => {
     </p>
     <Transition name="arrow">
       <div
-        v-if="blok.arrow_on_hover && !isOutside"
+        v-if="blok.arrow_on_hover && hovering"
         class="picture-arrow"
         :style="computedArrowPosition"
         aria-hidden="true">
