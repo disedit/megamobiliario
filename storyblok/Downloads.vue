@@ -5,7 +5,7 @@ const props = defineProps({ blok: Object })
 /* Security is not important here */
 const accessAllowed = ref(false)
 const showDownloads = computed(() => {
-  const storedPassword = localStorage.getItem('downloads_pass')
+  const storedPassword = (typeof localStorage !== 'undefined') ? localStorage.getItem('downloads_pass') : false
   return storedPassword === props.blok.password || accessAllowed.value
 })
 </script>
