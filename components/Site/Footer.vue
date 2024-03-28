@@ -153,6 +153,10 @@ const legalNotice = computed(() => {
 }
 
 @include media('<=md') {
+  .footer .container {
+    padding-top: var(--spacer-10);
+  }
+  
   .footer-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -166,6 +170,8 @@ const legalNotice = computed(() => {
   }
 
   .footer-logo {
+    margin-bottom: var(--spacer-2);
+
     svg {
       height: 3rem;
     }

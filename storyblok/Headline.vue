@@ -24,4 +24,12 @@ defineProps({ blok: Object })
       margin: 0 0 var(--spacer-14) 0;
     }
   }
+
+  @include media('<lg') {
+  .headline {
+    &-text {
+      margin: 0 0 var(--spacer-10) 0;
+    }
+  }
+}
 </style>

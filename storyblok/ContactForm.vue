@@ -23,7 +23,8 @@ defineProps({ blok: Object })
 
   .container {
     max-width: 1500px;
-    padding: var(--spacer-16) 0;
+    padding-top: var(--spacer-16);
+    padding-bottom: var(--spacer-16);
   }
 
   &-grid {
@@ -55,6 +56,11 @@ defineProps({ blok: Object })
 
 @include media('<lg') {
   .contact {
+    .container {
+      padding-top: var(--spacer-10);
+      padding-bottom: var(--spacer-10);
+    }
+
     &-grid {
       grid-template-columns: 1fr;
     }

@@ -41,21 +41,26 @@ onMounted(() => {
       'grid', `bg-${blok.background_color}`, `text-${blok.text_color}`, 'legoable',
       { 'aspect-11': blok.force_square }
     ]"
+    :style="{
+      '--fixed-height-mobile': blok.fixed_height_mobile
+    }"
   >
     <div class="container">
       <header v-if="blok.header.length > 0" class="grid-header">
         <StoryblokComponent
-          v-for="blok in blok.header"
-          :key="blok._uid"
-          :blok="blok" />
+          v-for="component in blok.header"
+          :key="component._uid"
+          :blok="component" />
       </header>
 
       <div v-if="blok.blocks.length > 0" class="grid-content">
         <StoryblokComponent
-          v-for="blok in blok.blocks"
-          :key="blok._uid"
-          :blok="blok"
+          v-for="picture in blok.blocks"
+          :key="picture._uid"
+          :blok="picture"
+          :arrow-on-hover="blok.arrow_on_hover"
           class="grid-item" />
+          {{ blok.arrow_on_hover }}
       </div>
     </div>
   </section>
@@ -79,6 +84,8 @@ onMounted(() => {
 
 @include media('<lg') {
   .grid {
+    padding: var(--spacer-8) 0;
+
     &-content {
       grid-template-columns: 1fr;
     }

@@ -123,7 +123,10 @@ onMounted(() => {
 
 @include media('<lg') {
   .grid {
+    padding: var(--spacer-8) 0;
+
     &-content {
+      margin-top: 0;
       grid-template-columns: 1fr;
     }
   }

@@ -1,16 +1,24 @@
-<script setup lang="ts">
-import type { NuxtError } from '#app'
-
-const props = defineProps({
-  error: Object as () => NuxtError
-})
-
-const handleError = () => clearError({ redirect: '/' })
-</script>
-
 <template>
   <div>
-    <h2>{{ error.statusCode }}</h2>
-    <button @click="handleError">Clear errors</button>
+    <SiteNav />
+    <main class="error-page">
+      <h1>Error 404</h1>
+    </main>
+    <SiteFooter />
   </div>
 </template>
+
+<style lang="scss">
+.error-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+
+  h1 {
+    font-family: var(--font-headline);
+    font-weight: 900;
+    font-size: var(--text-xxl);
+  }
+}
+</style>

@@ -1,5 +1,8 @@
 <script setup>
-const props = defineProps({ blok: Object })
+const props = defineProps({
+  blok: { type: Object, required: true },
+  arrowOnHover: { type: Boolean, default: false }
+})
 
 /* Link */
 const tag = computed(() => {
@@ -8,6 +11,7 @@ const tag = computed(() => {
     : 'article'
 })
 const { internalLink } = useLinks()
+const hasLink = computed(() => !!props.blok.link.id)
 
 /* Date */
 const date = useDate(props.blok.date)
@@ -29,7 +33,7 @@ const computedArrowPosition = computed(() => {
     :href="blok.link?.linktype === 'url' ? blok.link?.cached_url : null"
     :to="blok.link?.linktype === 'story' ? internalLink(blok.link?.cached_url) : null"
     :target="blok.link?.target"
-    :class="['picture', { 'arrow-on-hover': blok.arrow_on_hover }]"
+    :class="['picture', { 'arrow-on-hover': (arrowOnHover || blok.arrow_on_hover) && hasLink }]"
     v-editable="blok"
   >
     <div class="picture-thumbnail" @mouseenter="hovering = true" @mouseleave="hovering = false">
@@ -57,7 +61,7 @@ const computedArrowPosition = computed(() => {
     </p>
     <Transition name="arrow">
       <div
-        v-if="blok.arrow_on_hover && hovering"
+        v-if="(arrowOnHover || blok.arrow_on_hover) && hasLink && hovering"
         class="picture-arrow"
         :style="computedArrowPosition"
         aria-hidden="true">
@@ -186,8 +190,18 @@ const computedArrowPosition = computed(() => {
 
   @include media('<lg') {
     .picture {
+      &-thumbnail {
+        img {
+          height: var(--fixed-height-mobile, 100%);
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: var(--spacer-5);
+      }
+
       &-title {
-        margin: var(--spacer-5) 0;
+        margin: var(--spacer-5) 0 0;
       }
     }
   }

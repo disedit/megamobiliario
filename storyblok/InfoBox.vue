@@ -83,7 +83,7 @@ const { internalLink } = useLinks()
 
   &-grid {
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: var(--text-column-width, 1fr) var(--picture-column-width, 300px);
     gap: var(--site-padding);
     grid-template-areas: "content picture";
   }
@@ -114,18 +114,20 @@ const { internalLink } = useLinks()
   &-picture {
     grid-area: picture;
     display: flex;
+    background: yellow;
 
     img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      aspect-ratio: 1;
     }
   }
 
   &.align-right {
     .info-box-grid {
-      grid-template-columns: 1fr 5fr;
+      grid-template-columns: var(--picture-column-width, 300px) var(--text-column-width, 1fr);
       grid-template-areas: "picture content";
     }
 
@@ -136,6 +138,12 @@ const { internalLink } = useLinks()
     .info-box-text {
       text-wrap: initial;
     }
+  }
+}
+
+@include media('<xxl') {
+  .info-box {
+    --picture-column-width: 250px;
   }
 }
 

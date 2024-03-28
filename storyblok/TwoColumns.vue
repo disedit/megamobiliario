@@ -25,7 +25,7 @@ defineProps({ blok: Object })
 
   .container {
     width: fit-content;
-    padding: 0 0 var(--spacer-16);
+    padding-bottom: var(--spacer-16);
   }
 
   :deep(.rich-text .container) {
@@ -54,6 +54,7 @@ defineProps({ blok: Object })
   .two-columns {
     .container {
       width: 100%;
+      padding-bottom: var(--spacer-12);
     }
 
     &-grid {
