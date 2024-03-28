@@ -93,6 +93,7 @@ function scrollPage () {
     font-size: var(--text-lg);
     margin: 0;
     margin-top: .25em;
+    text-align: center;
   }
 
   &-arrow {
@@ -117,6 +118,15 @@ function scrollPage () {
       border: 0;
       color: inherit;
       cursor: pointer;
+    }
+  }
+}
+
+@include media('<md') {
+  .hero {
+    &-subheading {
+      font-size: var(--text-md);
+      margin-top: var(--spacer-4);
     }
   }
 }
