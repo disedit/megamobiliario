@@ -1,13 +1,6 @@
 <script setup>
 const props = defineProps({ blok: Object })
 
-const img = useImage()
-const backgroundStyle = computed(() => {
-  if (!props.blok.background_image?.filename) return null
-  const imgUrl = img(props.blok.background_image.filename)
-  return { backgroundImage: `url('${imgUrl}')` }
-})
-
 const { y: scrollY } = useWindowScroll()
 
 function scrollPage () {
@@ -22,7 +15,10 @@ function scrollPage () {
       'hero', `bg-${blok.color}`, `text-${blok.text_color}`,
       { 'full-height': blok.full_height, 'large-heading': blok.large_heading, 'has-arrow': blok.show_arrow }
     ]"
-    :style="backgroundStyle">
+    :style="{
+      '--background-align': blok.background_align
+    }"
+  >
     <h1 v-if="blok.heading" class="hero-heading">
       <div
         v-if="!blok.animate_text"
@@ -45,13 +41,23 @@ function scrollPage () {
         <IconArrowDown />
       </button>
     </div>
+    <div class="hero-background">
+      <NuxtPicture
+        v-if="blok.background_image?.filename"
+        format="avif,webp"
+        :src="blok.background_image.filename"
+        :img-attrs="{ alt: blok.background_image.alt, class: 'hero-background-img' }"
+        sizes="100vw md:1200px lg:2000px"
+        :placeholder="[50, 50]"
+        preload
+      />
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .hero {
   display: flex;
-  background-size: cover;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -75,6 +81,7 @@ function scrollPage () {
   }
 
   &-heading {
+    position: relative;
     font-family: var(--font-headline);
     font-weight: bold;
     letter-spacing: -.02em;
@@ -83,6 +90,7 @@ function scrollPage () {
     text-align: center;
     line-height: 1.1;
     text-wrap: balance;
+    z-index: 10;
 
     &-content {
       white-space: pre-wrap;
@@ -90,10 +98,34 @@ function scrollPage () {
   }
 
   &-subheading {
+    position: relative;
     font-size: var(--text-lg);
     margin: 0;
     margin-top: .25em;
     text-align: center;
+    z-index: 10;
+  }
+
+  &-background {
+    display: flex;
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    z-index: 1;
+
+    :deep(picture) {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    :deep(img) {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--background-align, center);
+    }
   }
 
   &-arrow {
@@ -106,6 +138,7 @@ function scrollPage () {
     justify-content: center;
     padding: var(--site-padding);
     animation: arrow 3s infinite;
+    z-index: 2;
 
     svg {
       height: 2.5rem;

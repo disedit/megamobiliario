@@ -202,7 +202,7 @@ watch(y, (currentScrollPosition) => {
       color: var(--white);
     }
 
-    &--hidden {
+    &--hidden:not(:focus-within) {
       transform: translate3d(0, -100%, 0);
     }
 

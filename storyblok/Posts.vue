@@ -99,6 +99,7 @@ onMounted(() => {
           v-for="post in posts"
           :key="post.id"
           :blok="post"
+          class="grid-item"
         />
       </div>
     </div>

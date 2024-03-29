@@ -57,8 +57,8 @@ defineProps({ blok: Object })
 @include media('<lg') {
   .contact {
     .container {
-      padding-top: var(--spacer-10);
-      padding-bottom: var(--spacer-10);
+      padding-top: var(--spacer-12);
+      padding-bottom: var(--spacer-12);
     }
 
     &-grid {

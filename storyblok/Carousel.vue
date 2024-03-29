@@ -20,7 +20,9 @@ defineProps({ blok: Object })
           format="avif,webp"
           :src="picture.filename"
           :img-attrs="{ alt: picture.alt, class: 'carousel__picture' }"
-          placeholder
+          sizes="100vw"
+          :placeholder="[50, 50]"
+          preload
         />
       </Slide>
 

@@ -114,7 +114,6 @@ const { internalLink } = useLinks()
   &-picture {
     grid-area: picture;
     display: flex;
-    background: yellow;
 
     img {
       display: block;
