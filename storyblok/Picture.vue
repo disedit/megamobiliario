@@ -41,7 +41,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture?.filename"
         :src="blok.picture.filename"
         :alt="blok.picture.alt"
-        sizes="100vw md:900px lg:1200px"
+        :width="600"
         :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.id }]"
         preload
       />
@@ -49,7 +49,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture_hover?.filename"
         :src="blok.picture_hover.filename"
         :alt="blok.picture_hover.alt"
-        sizes="100vw md:900px lg:1200px"
+        :width="600"
         class="picture-thumbnail-hover"
         preload
       />

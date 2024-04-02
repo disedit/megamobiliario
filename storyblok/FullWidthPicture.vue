@@ -16,8 +16,7 @@ defineProps({ blok: Object })
       format="avif,webp"
       :src="blok.picture.filename"
       :img-attrs="{ alt: blok.picture.alt, class: 'full-width-picture-img' }"
-      sizes="100vw md:1000px lg:1600px"
-      :placeholder="[50, 50]"
+      sizes="100vw md:750px lg:1200px"
       preload
      />
   </section>

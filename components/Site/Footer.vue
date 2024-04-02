@@ -65,7 +65,7 @@ const legalNotice = computed(() => {
     grid-template-columns: repeat(4, 1fr) auto auto;
     grid-template-areas:
       "address links socials . . ."
-      "logo . . . awards legal";
+      "logo awards awards awards awards legal";
     gap: var(--spacer-12);
   }
 
@@ -118,15 +118,23 @@ const legalNotice = computed(() => {
     display: flex;
     gap: var(--spacer-8);
     justify-content: flex-end;
+    align-items: center;
+    align-self: center;
+    flex-wrap: wrap;
 
     img {
-      height: 4rem;
+      height: 4.5rem;
+
+      &[alt='Premi Artesania Comunitat Valenciana 2023'] {
+        height: 5.5rem;
+      }
     }
   }
 
   &-legal {
     grid-area: legal;
     text-align: right;
+    align-self: center;
 
     :deep(p) {
       margin: 0;
@@ -139,7 +147,7 @@ const legalNotice = computed(() => {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       "address links socials ."
-      "logo . awards legal";
+      "logo awards awards legal";
   }
 }
 
@@ -150,9 +158,18 @@ const legalNotice = computed(() => {
       "address links socials"
       "logo awards legal";
   }
+
+  .footer-awards {
+    justify-content: center;
+  }
+
+  .footer-legal,
+  .footer-logo {
+    align-self: flex-end;
+  }
 }
 
-@include media('<=md') {
+@include media('<=lg') {
   .footer .container {
     padding-top: var(--spacer-10);
   }

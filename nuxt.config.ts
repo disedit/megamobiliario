@@ -3,10 +3,6 @@ export default defineNuxtConfig({
   ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
 
   app: {
-    pageTransition: {
-      name: 'page',
-      mode: 'out-in'
-    },
     head: {
       meta: [
         { name: 'theme-color', content: '#ffffff' },

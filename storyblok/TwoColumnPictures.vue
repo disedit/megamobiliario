@@ -16,9 +16,8 @@
               v-if="blok.left_column_picture?.filename"
               format="avif,webp"
               :src="blok.left_column_picture.filename"
-              sizes="100vw md:1200px lg:1500px"
+              sizes="100vw md:500px lg:900px"
               :img-attrs="{ alt: blok.left_column_picture.alt }"
-              :placeholder="[50, 50]"
               preload
             />
           </div>
@@ -42,8 +41,7 @@
               format="avif,webp"
               :src="blok.right_column_picture.filename"
               :img-attrs="{ alt: blok.right_column_picture.alt }"
-              sizes="100vw md:600px lg:1000px"
-              :placeholder="[50, 50]"
+              sizes="100vw md:350px lg:500px"
               preload
             />
           </div>
