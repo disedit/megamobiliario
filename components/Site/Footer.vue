@@ -30,7 +30,7 @@ const legalNotice = computed(() => {
           <h4>{{ $t('footer.socials') }}</h4>
           <ul class="footer-socials list-reset">
             <li v-for="blok in config.social_networks" :key="blok._uid">
-              <SiteUnderlinedLink :to="blok.link.url">
+              <SiteUnderlinedLink :to="blok.link.url" target="_blank" rel="noopener">
                 {{ blok.label }}
               </SiteUnderlinedLink>
             </li>
