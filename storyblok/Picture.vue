@@ -1,7 +1,8 @@
 <script setup>
 const props = defineProps({
   blok: { type: Object, required: true },
-  arrowOnHover: { type: Boolean, default: false }
+  arrowOnHover: { type: Boolean, default: false },
+  large: { type: Boolean, default: false }
 })
 
 /* Link */
@@ -41,7 +42,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture?.filename"
         :src="blok.picture.filename"
         :alt="blok.picture.alt"
-        :width="600"
+        :width="large ? 1500 : 750"
         :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.id }]"
         preload
       />
@@ -49,7 +50,7 @@ const computedArrowPosition = computed(() => {
         v-if="blok.picture_hover?.filename"
         :src="blok.picture_hover.filename"
         :alt="blok.picture_hover.alt"
-        :width="600"
+        :width="large ? 1500 : 750"
         class="picture-thumbnail-hover"
         preload
       />

@@ -14,7 +14,8 @@ defineProps({ blok: Object })
       <StoryblokComponent
         v-for="blok in blok.blocks"
         :key="blok._uid"
-        :blok="blok" />
+        :blok="blok"
+        large />
     </div>
   </section>
 </template>

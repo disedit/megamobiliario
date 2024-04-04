@@ -42,12 +42,11 @@ function scrollPage () {
       </button>
     </div>
     <div class="hero-background">
-      <NuxtPicture
+      <NuxtImg
         v-if="blok.background_image?.filename"
-        format="avif,webp"
         :src="blok.background_image.filename"
         :img-attrs="{ alt: blok.background_image.alt, class: 'hero-background-img' }"
-        sizes="100vw md:750px lg:1200px"
+        sizes="900px md:1300px xl:1750px"
         preload
       />
     </div>
