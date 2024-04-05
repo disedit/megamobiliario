@@ -16,7 +16,8 @@ function scrollPage () {
       { 'full-height': blok.full_height, 'large-heading': blok.large_heading, 'has-arrow': blok.show_arrow }
     ]"
     :style="{
-      '--background-align': blok.background_align
+      '--background-align': blok.background_align,
+      '--background-align-mobile': blok.background_align_mobile
     }"
   >
     <h1 v-if="blok.heading" class="hero-heading">
@@ -158,6 +159,12 @@ function scrollPage () {
     &-subheading {
       font-size: var(--text-md);
       margin-top: var(--spacer-4);
+    }
+
+    &-background {
+      :deep(img) {
+        object-position: var(--background-align-mobile, center);
+      }
     }
   }
 }
