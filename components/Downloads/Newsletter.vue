@@ -1,7 +1,12 @@
 <script setup>
 defineProps({
-  privacyPolicy: { type: Object, required: true }
+  privacyPolicy: { type: Object, required: true },
+  submittedText: { type: Object, required: true }
 })
+
+const submitting = ref(false)
+const submitted = ref(false)
+const error = ref(false)
 
 const form = reactive({
   first_name: '',
@@ -9,14 +14,47 @@ const form = reactive({
   company: '',
   role: '',
   city: '',
-  country: '',
+  country: 'ES',
   email: '',
-  privacy: false
+  privacy: false,
+  message: ''
 })
+
+const submit = async () => {
+  submitting.value = true
+
+  try {
+    const formData = new FormData()
+    formData.append('first_name', form.first_name)
+    formData.append('last_name', form.last_name)
+    formData.append('company', form.company)
+    formData.append('role', form.role)
+    formData.append('city', form.city)
+    formData.append('country', form.country)
+    formData.append('email', form.email)
+    formData.append('message', form.message)
+
+      // https://services.disedit.com/api/megamobiliario/register
+    await fetch('http://127.0.0.1:8000/api/megamobiliario/register', {
+        method: 'post',
+        body: formData,
+    })
+
+    submitted.value = true
+  } catch(e) {
+    error.value = true
+  } finally {
+    submitting.value = false
+  }
+}
 </script>
 
 <template>
-  <form class="downloads-form">
+  <form
+    v-if="!submitted"
+    @submit.prevent="submit"
+    :class="['downloads-form', { submitting }]"
+  >
     <FormInput
       name="first_name"
       :label="$t('fields.first_name')"
@@ -52,7 +90,7 @@ const form = reactive({
       variant="beige"
       v-model="form.city"
     />
-    <FormInput
+    <FormCountrySelect
       name="country"
       :label="$t('fields.country')"
       required
@@ -67,6 +105,12 @@ const form = reactive({
       class="field-spans-2"
       variant="beige"
       v-model="form.email"
+    />
+    <FormTextarea
+      name="message"
+      :label="$t('fields.message')"
+      v-model="form.message"
+      class="visually-hidden"
     />
     <div class="downloads-form-gdpr field-spans-2">
       <label class="checkbox-label">
@@ -92,6 +136,9 @@ const form = reactive({
       </FormButton>
     </div>
   </form>
+  <div v-else class="downloads-form-message">
+    <UtilRichText :content="submittedText" class="field-spans-2" />
+  </div>
 </template>
 
 <style lang="scss">
@@ -103,6 +150,24 @@ const form = reactive({
   &-gdpr {
     font-size: var(--text-base);
     margin-bottom: var(--spacer-4);
+  }
+
+  &-message {
+    border: 1.5px var(--beige) solid;
+    padding: var(--spacer-6);
+
+    :deep(p) {
+      margin: 0;
+      margin-bottom: var(--spacer-3);
+    }
+
+    :deep(p:last-child) {
+      margin-bottom: 0;
+    }
+  }
+
+  &.submitting {
+    opacity: .5;
   }
 }
 

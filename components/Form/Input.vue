@@ -75,9 +75,11 @@ const active = computed(() => {
     font-family: inherit;
     font-size: var(--text-base);
     border-radius: 0;
+    height: 4rem;
 
     &:focus {
       outline: 0;
+      box-shadow: inset 0 0 0 1px var(--variant-color);
     }
 
     &:autofill,

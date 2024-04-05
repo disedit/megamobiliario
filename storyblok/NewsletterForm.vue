@@ -6,7 +6,7 @@ defineProps({ blok: Object })
   <section v-editable="blok" class="newsletter-form">
     <div class="container newsletter-form-grid">
       <UtilRichText :content="blok.text" class="text" />
-      <DownloadsNewsletter :privacy-policy="blok.privacy_policy" />
+      <DownloadsNewsletter :submitted-text="blok.submitted" :privacy-policy="blok.privacy_policy" />
     </div>
   </section>
 </template>

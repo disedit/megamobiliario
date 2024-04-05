@@ -12,7 +12,8 @@ const form = reactive({
   city: '',
   country: '',
   email: '',
-  message: ''
+  message: '',
+  company: ''
 })
 
 const submit = async () => {
@@ -25,6 +26,7 @@ const submit = async () => {
     formData.append('country', form.name)
     formData.append('email', form.email)
     formData.append('message', form.message)
+    formData.append('company', form.company)
 
     await fetch('https://services.disedit.com/api/megamobiliario/contact', {
         method: 'post',
@@ -72,6 +74,13 @@ const submit = async () => {
       required
       v-model="form.email"
       class="field-spans-2"
+    />
+    <FormInput
+      name="company"
+      :label="$t('fields.company')"
+      required
+      v-model="form.company"
+      class="visually-hidden"
     />
     <FormTextarea
       name="message"
