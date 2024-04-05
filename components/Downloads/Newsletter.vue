@@ -34,8 +34,7 @@ const submit = async () => {
     formData.append('email', form.email)
     formData.append('message', form.message)
 
-      // https://services.disedit.com/api/megamobiliario/register
-    await fetch('http://127.0.0.1:8000/api/megamobiliario/register', {
+    await fetch('https://services.disedit.com/api/megamobiliario/register', {
         method: 'post',
         body: formData,
     })
