@@ -22,8 +22,8 @@ const submit = async () => {
   try {
     const formData = new FormData()
     formData.append('name', form.name)
-    formData.append('city', form.name)
-    formData.append('country', form.name)
+    formData.append('city', form.city)
+    formData.append('country', form.country)
     formData.append('email', form.email)
     formData.append('message', form.message)
     formData.append('company', form.company)
