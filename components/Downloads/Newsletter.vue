@@ -1,7 +1,8 @@
 <script setup>
-defineProps({
+const props = defineProps({
   privacyPolicy: { type: Object, required: true },
-  submittedText: { type: Object, required: true }
+  submittedText: { type: Object, required: true },
+  password: { type: String, required: true }
 })
 
 const submitting = ref(false)
@@ -33,6 +34,7 @@ const submit = async () => {
     formData.append('country', form.country)
     formData.append('email', form.email)
     formData.append('message', form.message)
+    formData.append('password', props.password)
 
     await fetch('https://services.disedit.com/api/megamobiliario/register', {
         method: 'post',

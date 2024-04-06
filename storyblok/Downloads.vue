@@ -23,16 +23,17 @@ const showDownloads = computed(() => {
         @allowed="accessAllowed = true"
       />
       <StoryblokComponent
-        v-for="blok in blok.pre_password"
-        :key="blok._uid"
-        :blok="blok"
+        v-for="component in blok.pre_password"
+        :key="component._uid"
+        :blok="component"
+        :password="blok.password"
       />
     </div>
     <div v-else>
       <StoryblokComponent
-        v-for="blok in blok.downloads"
-        :key="blok._uid"
-        :blok="blok"
+        v-for="component in blok.downloads"
+        :key="component._uid"
+        :blok="component"
       />
     </div>
   </div>

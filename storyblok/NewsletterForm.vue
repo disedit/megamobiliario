@@ -1,12 +1,15 @@
 <script setup>
-defineProps({ blok: Object })
+defineProps({ blok: Object, password: String })
 </script>
 
 <template>
   <section v-editable="blok" class="newsletter-form">
     <div class="container newsletter-form-grid">
       <UtilRichText :content="blok.text" class="text" />
-      <DownloadsNewsletter :submitted-text="blok.submitted" :privacy-policy="blok.privacy_policy" />
+      <DownloadsNewsletter
+        :submitted-text="blok.submitted"
+        :privacy-policy="blok.privacy_policy"
+        :password="password" />
     </div>
   </section>
 </template>
