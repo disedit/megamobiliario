@@ -10,7 +10,7 @@ const error = ref(false)
 const form = reactive({
   name: '',
   city: '',
-  country: '',
+  country: 'ES',
   email: '',
   message: '',
   company: ''
@@ -61,7 +61,7 @@ const submit = async () => {
       required
       v-model="form.city"
     />
-    <FormInput
+    <FormCountrySelect
       name="country"
       :label="$t('fields.country')"
       required
@@ -78,7 +78,6 @@ const submit = async () => {
     <FormInput
       name="company"
       :label="$t('fields.company')"
-      required
       v-model="form.company"
       class="visually-hidden"
     />
