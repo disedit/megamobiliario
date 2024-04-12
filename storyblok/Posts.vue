@@ -17,7 +17,7 @@ const specificPosts = {
 const autopopulate = {
   starts_with: props.blok.autopopulate,
   per_page: props.blok.autopopulate_limit || 3,
-  sort_by: 'sort_by_date,position:desc,created_at:desc',
+  sort_by: 'sort_by_date:desc,created_at:desc',
   is_startpage: false
 }
 
