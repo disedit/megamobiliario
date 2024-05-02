@@ -54,7 +54,8 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: 'lang',
-    baseUrl: 'https://megamobiliario.com'
+    baseUrl: 'https://megamobiliario.com',
+    detectBrowserLanguage: false
   },
 
   image: {
