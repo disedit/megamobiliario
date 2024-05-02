@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/inicio", "destination": "/" },
+    { "source": "/dormitorio", "destination": "/" }
+  ]
+}
