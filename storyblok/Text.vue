@@ -49,7 +49,7 @@ const date = useDate(props.blok.date)
   &-heading {
     margin: 0;
     margin-bottom: var(--spacer-8);
-    line-height: 1;
+    line-height: 1.1;
     font-size: var(--text-lg);
     font-family: var(--font-headline);
 
@@ -69,7 +69,7 @@ const date = useDate(props.blok.date)
     :deep(p) {
       margin: 0;
       margin-bottom: var(--spacer-6);
-      line-height: 1.25;
+      line-height: 1.5;
     }
 
     :deep(p:last-child) {

@@ -81,7 +81,7 @@ defineProps({ blok: Object })
 
   picture {
     width: 100%;
-    background-color: red;
+    background-color: var(--black);
   }
 
   &__picture {
