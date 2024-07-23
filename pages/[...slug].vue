@@ -58,5 +58,6 @@ useHead({ title })
         :blok="story.content"
       />
     </main>
+    <SiteFooter />
   </div>
 </template>

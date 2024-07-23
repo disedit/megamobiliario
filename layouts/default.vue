@@ -13,7 +13,6 @@ const head = useLocaleHead({
     <div class="page">
       <slot />
     </div>
-    <SiteFooter />
   </div>
 </template>
 
