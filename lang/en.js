@@ -24,7 +24,8 @@ export default {
     error: 'An error occurred trying to submit your message. Please try again later.',
     privacy_before: 'I have read and accept the',
     privacy_policy: 'Privacy Policy',
-    privacy_after: 'and wish to subscribe to the newsletter.'
+    privacy_after: 'and wish to subscribe to the newsletter.',
+    data_processing: 'I have been informed, I understand and authorize the processing of the provided personal data.'
   },
   password: {
     label: 'Password',

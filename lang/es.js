@@ -24,7 +24,8 @@ export default {
     error: 'Ha ocurrido un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde. Disculpa las molestias.',
     privacy_before: 'He leído y acepto la',
     privacy_policy: 'política de privacidad',
-    privacy_after: 'y deseo subscribirme a la newsletter.'
+    privacy_after: 'y deseo subscribirme a la newsletter.',
+    data_processing: 'He sido informado, entiendo y autorizo el tratamiento de datos personales',
   },
   password: {
     label: 'Contraseña',

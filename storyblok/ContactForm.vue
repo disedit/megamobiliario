@@ -9,8 +9,12 @@ defineProps({ blok: Object })
         <div class="contact-grid">
           <div class="contact-text">          
             <p>{{ blok.text }}</p>
+
+            <div class="contact-legal">
+              <UtilMarked :content="blok.legal" />
+            </div>
           </div>
-          <ContactFormFields class="contact-form" :submitted-text="blok.text_on_submitted" />
+          <ContactFormFields class="contact-form" :submitted-text="blok.text_on_submitted" :legal="blok.legal" />
         </div>
       </div>
     </section>
@@ -52,6 +56,11 @@ defineProps({ blok: Object })
       margin: 0;
     }
   }
+
+  &-legal {
+    font-size: var(--text-sm);
+    margin-top: var(--spacer-10);
+  }
 }
 
 @include media('<lg') {
@@ -63,6 +72,10 @@ defineProps({ blok: Object })
 
     &-grid {
       grid-template-columns: 1fr;
+    }
+
+    &-legal {
+      display: none;
     }
   }
 }

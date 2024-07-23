@@ -1,6 +1,7 @@
 <script setup>
 defineProps({
-  submittedText: { type: String, required: true }
+  submittedText: { type: String, required: true },
+  legal: { type: String, required: true },
 })
 
 const submitting = ref(false)
@@ -88,6 +89,23 @@ const submit = async () => {
       v-model="form.message"
       class="field-spans-2"
     />
+    <div class="contact-form-gdpr field-spans-2">
+      <div class="contact-form-legal">
+        <UtilMarked :content="legal" />
+      </div>
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          name="MMERGE3"
+          value="I have read and agree to the Terms and Conditions."
+          class="checkbox-input"
+          required
+        />
+        <span>
+          {{ $t('fields.data_processing') }}
+        </span>
+      </label>
+    </div>
     <div class="contact-form-actions field-spans-2">
       <FormButton
         :loading="submitting"
@@ -131,12 +149,40 @@ const submit = async () => {
     }
   }
 
+  &-gdpr {
+    font-size: var(--text-base);
+    margin-bottom: var(--spacer-4);
+  }
+
+  &-legal {
+    font-size: var(--text-sm);
+    margin-bottom: var(--spacer-6);
+  }
+
   &.submitting {
     opacity: .5;
   }
 }
 
+.checkbox-input {
+  background-color: var(--brown);
+  color: var(--white);
+  border-color: var(--white);
+
+  &::before {
+    box-shadow: inset 1em 1em var(--white);
+  }
+}
+
 .field-spans-2 {
   grid-column: span 2;
+}
+
+@include media('>lg') {
+  .contact-form {
+    &-legal {
+      display: none;
+    }
+  }
 }
 </style>

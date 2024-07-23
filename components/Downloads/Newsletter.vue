@@ -176,45 +176,6 @@ const submit = async () => {
   grid-column: span 2;
 }
 
-.checkbox-label {
-  display: flex;
-  gap: var(--spacer-3);
-}
-
-.checkbox-input {
-  appearance: none;
-  background-color: var(--white);
-  margin: 0;
-  font: inherit;
-  color: var(--beige);
-  width: 1.25em;
-  height: 1.25em;
-  border: 1.5px solid var(--beige);
-  border-radius: 0;
-  display: grid;
-  place-content: center;
-  flex-shrink: 0;
-
-  &::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    transform: scale(0);
-    transition: .25s transform ease-in-out;
-    box-shadow: inset 1em 1em var(--beige);
-    border-radius: 100%;
-  }
-
-  &:checked::before {
-    transform: scale(1);
-  }
-
-  &:focus-visible {
-    outline: 0;
-    box-shadow: 0 0 0 2px var(--black);
-  }
-}
-
 @include media('<md') {
   .downloads-form {
     grid-template-columns: 1fr;
