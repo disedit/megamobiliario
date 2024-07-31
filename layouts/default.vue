@@ -4,11 +4,16 @@ const head = useLocaleHead({
   identifierAttribute: 'id',
   addSeoAttributes: true
 })
+
+useHead({
+  htmlAttrs: { lang: head.value.htmlAttrs.lang, dir: head.value.htmlAttrs.dir },
+  link: head.value.link,
+  meta: head.value.meta
+})
 </script>
 
 <template>
   <div>
-    <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir" />
     <NuxtLoadingIndicator :color="false" />
     <div class="page">
       <slot />

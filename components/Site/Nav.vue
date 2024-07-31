@@ -15,7 +15,7 @@ const props = defineProps({
 })
 
 /* Load nav items */
-const config = await useConfig()
+const config = useState('config')
 const { slug } = useRoute().params
 const localePath = useLocalePath()
 function isActive (link) {

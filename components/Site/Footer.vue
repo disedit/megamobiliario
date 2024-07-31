@@ -1,10 +1,10 @@
 <script setup>
-const config = await useConfig()
+const config = useState('config')
 
 const legalNotice = computed(() => {
   const today = new Date()
   const currentYear = today.getFullYear()
-  return config.legal_notice.replaceAll('{currentYear}', currentYear)
+  return config.value.legal_notice.replaceAll('{currentYear}', currentYear)
 })
 </script>
 

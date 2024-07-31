@@ -1,4 +1,5 @@
 export const useConfig = async () => {
+  const siteConfig = useState('config', () => null)
   const { locale } = useI18n()
   const version = useEnvironment()
   const storyblokApi = useStoryblokApi()
@@ -12,5 +13,11 @@ export const useConfig = async () => {
     { watch: [locale] }
   )
 
-  return config.value.data.story.content
+  siteConfig.value = config.value.data.story.content
+
+  watch(config, (newConfig) => {
+    siteConfig.value = newConfig.data.story.content
+  })
+
+  return siteConfig
 }

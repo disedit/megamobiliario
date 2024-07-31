@@ -63,5 +63,7 @@ export default defineNuxtConfig({
     storyblok: {
       baseURL: 'https://a.storyblok.com'
     }
-  }
+  },
+
+  compatibilityDate: '2024-07-31'
 })
