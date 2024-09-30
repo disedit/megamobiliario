@@ -10,26 +10,28 @@ defineProps({ blok: Object })
     v-editable="blok"
     :class="['carousel-wrapper', `color-${blok.color}`, { 'full-width': blok.full_width }]"
   >
-    <Carousel
-      :items-to-show="1"
-      :wrap-around="!!blok.infinite"
-      :autoplay="blok.autoplay * 1000">
-      <Slide v-for="picture in blok.pictures" :key="picture._uid">
-        <NuxtPicture
-          v-if="picture.filename"
-          format="avif,webp"
-          :src="picture.filename"
-          :img-attrs="{ alt: picture.alt, class: 'carousel__picture' }"
-          sizes="100vw md:750px lg:1200px"
-          preload
-        />
-      </Slide>
+    <ClientOnly>
+      <Carousel
+        :items-to-show="1"
+        :wrap-around="!!blok.infinite"
+        :autoplay="blok.autoplay * 1000">
+        <Slide v-for="picture in blok.pictures" :key="picture._uid">
+          <NuxtPicture
+            v-if="picture.filename"
+            format="avif,webp"
+            :src="picture.filename"
+            :img-attrs="{ alt: picture.alt, class: 'carousel__picture' }"
+            sizes="100vw md:750px lg:1200px"
+            preload
+          />
+        </Slide>
 
-      <template #addons>
-        <Navigation v-if="blok.show_nav_buttons" />
-        <Pagination v-if="blok.show_pagination" />
-      </template>
-    </Carousel>
+        <template #addons>
+          <Navigation v-if="blok.show_nav_buttons" />
+          <Pagination v-if="blok.show_pagination" />
+        </template>
+      </Carousel>
+    </ClientOnly>
   </div>
 </template>
 
