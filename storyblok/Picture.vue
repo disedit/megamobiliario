@@ -7,9 +7,7 @@ const props = defineProps({
 
 /* Link */
 const tag = computed(() => {
-  return props.blok.link?.id ?
-    props.blok.link.linktype === 'story' ? resolveComponent('NuxtLink') : 'a'
-    : 'article'
+  return props.blok.link?.id ? resolveComponent('NuxtLink') : 'article'
 })
 const { internalLink } = useLinks()
 const hasLink = computed(() => !!props.blok.link.id)
@@ -31,8 +29,7 @@ const computedArrowPosition = computed(() => {
 <template>
   <component
     :is="tag"
-    :href="blok.link?.linktype === 'url' ? blok.link?.cached_url : null"
-    :to="blok.link?.linktype === 'story' ? internalLink(blok.link?.cached_url) : null"
+    :to="blok.link?.linktype === 'story' ? internalLink(blok.link?.cached_url) : blok.link?.cached_url"
     :target="blok.link?.target"
     :class="['picture', { 'arrow-on-hover': (arrowOnHover || blok.arrow_on_hover) && hasLink }]"
     v-editable="blok"
@@ -193,7 +190,7 @@ const computedArrowPosition = computed(() => {
     }
   }
 
-  @include media('<lg') {
+  @include media-lt-lg {
     .picture {
       &-thumbnail {
         img {

@@ -104,7 +104,7 @@ const date = useDate(props.blok.date)
   padding-top: 0;
 }
 
-@include media('<md') {
+@include media-lt-md {
   .text-grid {
     grid-template-columns: 1fr;
   }

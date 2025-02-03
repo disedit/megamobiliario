@@ -2,9 +2,7 @@
 const props = defineProps({ blok: Object })
 
 const tag = computed(() => {
-  return props.blok.link?.cached_url ?
-    props.blok.link.linktype === 'story' ? resolveComponent('NuxtLink') : 'a'
-    : 'div'
+  return props.blok.link?.cached_url ? resolveComponent('NuxtLink') : 'div'
 })
 
 const { internalLink } = useLinks()
@@ -17,8 +15,7 @@ const { internalLink } = useLinks()
   >
     <component
       :is="tag"
-      :href="blok.link?.linktype === 'url' ? blok.link?.cached_url : null"
-      :to="blok.link?.linktype === 'story' ? internalLink(blok.link?.cached_url) : null"
+      :to="blok.link?.linktype === 'story' ? internalLink(blok.link?.cached_url) : blok.link?.cached_url"
       :target="blok.link?.target">
       <div class="container">
         <div class="info-box-grid">
@@ -140,13 +137,13 @@ const { internalLink } = useLinks()
   }
 }
 
-@include media('<xxl') {
+@include media-lt-xxl {
   .info-box {
     --picture-column-width: 250px;
   }
 }
 
-@include media('<sm') {
+@include media-lt-sm {
   .info-box {
     &-grid {
       grid-template-columns: 1fr;

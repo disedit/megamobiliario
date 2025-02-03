@@ -98,7 +98,7 @@
   }
 }
 
-@include media('>=md') {
+@include media-gt-md {
   .two-column-pictures.even-columns {
     .two-column-pictures-grid {
       grid-template-columns: 1fr 1fr;
@@ -106,7 +106,7 @@
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   .two-column-pictures {
     &-grid {
       grid-template-columns: 1fr;

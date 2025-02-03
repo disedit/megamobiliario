@@ -114,7 +114,7 @@ function checkPassword () {
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   .downloads-password {
     &-form {
       grid-template-columns: 1fr auto;

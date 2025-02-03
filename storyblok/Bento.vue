@@ -93,7 +93,7 @@ onMounted(() => {
   }
 }
 
-@include media('>=md') {
+@include media-gt-sm {
   .bento {
     &-overflows {
       .bento-header {
@@ -112,7 +112,7 @@ onMounted(() => {
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   .bento {
     padding: var(--spacer-4) 0;
 

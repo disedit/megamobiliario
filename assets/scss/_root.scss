@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "include-media" as *;
+
 :root {
   --navbar-safe-area: #{$navbar-safe-area};
   --font-base: #{$font-base};
@@ -33,13 +36,13 @@
   }
 }
 
-@include media('<lg') {
+@include media-lt-lg {
   :root {
     --site-padding: var(--spacer-8);
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   :root {
     --site-padding: var(--spacer-6);
   }

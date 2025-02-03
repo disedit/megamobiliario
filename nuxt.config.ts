@@ -37,9 +37,9 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import "@/assets/scss/_variables.scss";
-            @import "@/assets/scss/_mixins.scss";
-            @import 'node_modules/include-media/dist/_include-media.scss';
+            @use "@/assets/scss/_variables.scss" as *;
+            @use "@/assets/scss/_mixins.scss" as *;
+            @use "@/assets/scss/_include-media.scss" as *;
           `
         }
       }
@@ -49,11 +49,11 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'es',
     locales: [
-      { code: 'es', iso: 'es-ES', name: 'Español', file: 'es.js' },
-      { code: 'en', iso: 'en', name: 'English', file: 'en.js' }
+      { code: 'es', language: 'es-ES', name: 'Español', file: 'es.js' },
+      { code: 'en', language: 'en', name: 'English', file: 'en.js' }
     ],
     lazy: true,
-    langDir: 'lang',
+    langDir: '',
     baseUrl: 'https://megamobiliario.com',
     detectBrowserLanguage: false
   },

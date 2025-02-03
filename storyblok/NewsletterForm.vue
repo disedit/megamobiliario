@@ -33,7 +33,7 @@ defineProps({ blok: Object, password: String })
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   .newsletter-form {
     &-grid {
       grid-template-columns: 1fr;

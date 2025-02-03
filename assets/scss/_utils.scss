@@ -1,16 +1,20 @@
+@use "variables" as *;
+@use "include-media" as *;
+@use "sass:map";
+
 /* Colors */
 @each $name, $color in $colors {
   .bg-#{$name} {
-    background-color: map-get($color, 'background');
+    background-color: map.get($color, 'background');
   }
 
   .text-#{$name} {
-    color: map-get($color, 'background');;
+    color: map.get($color, 'background');;
   }
 
   .color-#{$name} {
-    --bg-color: #{map-get($color, 'background')};
-    --text-color: #{map-get($color, 'text')};
+    --bg-color: #{map.get($color, 'background')};
+    --text-color: #{map.get($color, 'text')};
   }
 }
 
@@ -31,7 +35,7 @@ $sizes: (
 }
 
 /* Display */
-@include media('<md') {
+@include media-lt-md {
   .md\:hidden {
     display: none;
   }

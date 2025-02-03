@@ -1,5 +1,6 @@
 <script setup>
 const config = useState('config')
+const localePath = useLocalePath()
 
 const legalNotice = computed(() => {
   const today = new Date()
@@ -142,7 +143,7 @@ const legalNotice = computed(() => {
   }
 }
 
-@include media('<xxl') {
+@include media-lt-xxl {
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
@@ -151,7 +152,7 @@ const legalNotice = computed(() => {
   }
 }
 
-@include media('<xl') {
+@include media-lt-xl {
   .footer-grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
@@ -169,7 +170,7 @@ const legalNotice = computed(() => {
   }
 }
 
-@include media('<=lg') {
+@include media-lt-xl {
   .footer .container {
     padding-top: var(--spacer-10);
   }

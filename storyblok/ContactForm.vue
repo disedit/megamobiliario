@@ -63,7 +63,7 @@ defineProps({ blok: Object })
   }
 }
 
-@include media('<lg') {
+@include media-lt-lg {
   .contact {
     .container {
       padding-top: var(--spacer-12);

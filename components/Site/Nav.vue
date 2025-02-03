@@ -309,7 +309,7 @@ watch(y, (currentScrollPosition) => {
     }
   }
 
-  @include media('>=xl') {
+  @include media-gt-lg {
     .header {
       &-burger {
         display: none;
@@ -321,7 +321,7 @@ watch(y, (currentScrollPosition) => {
     }
   }
 
-  @include media('<xl') {
+  @include media-lt-xl {
     .header {
       &-logo svg {
         height: 2rem;

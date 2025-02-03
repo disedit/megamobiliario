@@ -178,7 +178,7 @@ const submit = async () => {
   grid-column: span 2;
 }
 
-@include media('>lg') {
+@include media-gt-lg {
   .contact-form {
     &-legal {
       display: none;

@@ -176,7 +176,7 @@ const submit = async () => {
   grid-column: span 2;
 }
 
-@include media('<md') {
+@include media-lt-md {
   .downloads-form {
     grid-template-columns: 1fr;
   }

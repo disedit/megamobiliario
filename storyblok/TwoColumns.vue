@@ -50,7 +50,7 @@ defineProps({ blok: Object })
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   .two-columns {
     .container {
       width: 100%;

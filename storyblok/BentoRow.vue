@@ -25,7 +25,7 @@ defineProps({ blok: Object })
   gap: var(--bento-gap);
 }
 
-@include media('<md') {
+@include media-lt-md {
   .bento-row {
     flex-shrink: 0;
     overflow: scroll;

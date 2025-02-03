@@ -122,7 +122,7 @@ onMounted(() => {
   }
 }
 
-@include media('<lg') {
+@include media-lt-lg {
   .grid {
     padding: var(--spacer-8) 0;
 

@@ -154,7 +154,7 @@ function scrollPage () {
   }
 }
 
-@include media('<md') {
+@include media-lt-md {
   .hero {
     &-subheading {
       font-size: var(--text-md);
