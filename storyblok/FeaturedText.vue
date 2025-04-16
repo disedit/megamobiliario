@@ -18,7 +18,7 @@ defineProps({ blok: Object })
         :duration="1"
         class="featured-text-content animated"
       />
-      <UtilRichText v-else :content="blok.rich_text" class="featured-text-content" />
+      <UtilRichText v-else :content="blok.rich_text" class="featured-text-content balanced" />
     </div>
   </section>
 </template>
@@ -35,12 +35,15 @@ defineProps({ blok: Object })
   &-content {
     max-width: 1750px;
     text-align: center;
-    text-wrap: balance;
     font-size: var(--text-size);
     font-family: var(--font-headline);
 
     &.animated {
       margin: var(--spacer-9) 0;
+    }
+
+    &.balanced {
+      text-wrap: balance;
     }
   }
 }
