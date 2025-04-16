@@ -50,5 +50,21 @@ defineProps({ blok: Object })
       height: 100vh;
     }
   }
+
+  &-img-mobile {
+    display: none;
+  }
+}
+
+@include media('<md') {
+  .full-width-picture {
+    &-img-desktop {
+      display: none;
+    }
+
+    &-img-mobile {
+      display: block;
+    }
+  }
 }
 </style>
