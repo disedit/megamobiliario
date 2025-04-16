@@ -52,18 +52,18 @@ defineProps({ blok: Object })
   }
 
   &-img-mobile {
-    display: none;
+    display: none !important;
   }
 }
 
 @include media('<md') {
   .full-width-picture {
     &-img-desktop {
-      display: none;
+      display: none !important;
     }
 
     &-img-mobile {
-      display: block;
+      display: block !important;
     }
   }
 }

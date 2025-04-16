@@ -46,14 +46,16 @@ function scrollPage () {
       <NuxtImg
         v-if="blok.background_image?.filename"
         :src="blok.background_image.filename"
-        :img-attrs="{ alt: blok.background_image.alt, class: blok.background_image_sm?.filename ? 'hero-background-img hero-background-img-desktop' : 'hero-background-img' }"
+        :alt="blok.background_image.alt"
+        :class="['hero-background-img', { 'hero-background-img-desktop': !!blok.background_image_sm?.filename }]"
         sizes="900px md:1300px xl:1750px"
         preload
       />
       <NuxtImg
         v-if="blok.background_image_sm?.filename"
         :src="blok.background_image_sm.filename"
-        :img-attrs="{ alt: blok.background_image_sm.alt, class: 'hero-background-img hero-background-img-mobile' }"
+        :alt="blok.background_image_sm.alt"
+        class="hero-background-img hero-background-img-mobile"
         sizes="900px"
         preload
       />
@@ -134,11 +136,11 @@ function scrollPage () {
     }
 
     &-img-desktop {
-      display: block;
+      display: flex !important;
     }
 
     &-img-mobile {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -182,11 +184,11 @@ function scrollPage () {
       }
 
       &-img-desktop {
-        display: none;
+        display: none !important;
       }
 
       &-img-mobile {
-        display: block;
+        display: flex !important;
       }
     }
   }
