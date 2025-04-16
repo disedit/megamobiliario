@@ -43,7 +43,15 @@ const computedArrowPosition = computed(() => {
         :src="blok.picture.filename"
         :alt="blok.picture.alt"
         :width="large ? 1500 : 750"
-        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.id }]"
+        :class="['picture-thumbnail-default', { 'dims': !blok.picture_hover?.filename && blok.link?.id, 'picture-desktop': !!blok.picture_sm?.filename }]"
+        preload
+      />
+      <NuxtImg
+        v-if="blok.picture_sm?.filename"
+        :src="blok.picture_sm.filename"
+        :alt="blok.picture.alt"
+        :width="large ? 1500 : 750"
+        :class="['picture-thumbnail-default picture-mobile', { 'dims': !blok.picture_hover?.filename && blok.link?.id }]"
         preload
       />
       <NuxtImg
@@ -160,6 +168,14 @@ const computedArrowPosition = computed(() => {
         cursor: none;
       }
     }
+    
+    &-desktop {
+      display: block !important;
+    }
+
+    &-mobile {
+      display: none !important;
+    }
   }
 
   .aspect-11 {
@@ -199,6 +215,14 @@ const computedArrowPosition = computed(() => {
         img {
           height: var(--fixed-height-mobile, 100%);
         }
+      }
+
+      &-desktop {
+        display: none !important;
+      }
+
+      &-mobile {
+        display: block !important;
       }
 
       &:not(:last-child) {
