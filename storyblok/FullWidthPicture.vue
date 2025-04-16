@@ -15,8 +15,16 @@ defineProps({ blok: Object })
       v-if="blok.picture?.filename"
       format="avif,webp"
       :src="blok.picture.filename"
-      :img-attrs="{ alt: blok.picture.alt, class: 'full-width-picture-img' }"
+      :img-attrs="{ alt: blok.picture.alt, class: 'full-width-picture-img full-width-picture-img-desktop' }"
       sizes="100vw md:750px lg:1200px"
+      preload
+     />
+     <NuxtPicture
+      v-if="blok.picture_sm?.filename"
+      format="avif,webp"
+      :src="blok.picture_sm.filename"
+      :img-attrs="{ alt: blok.picture_sm.alt, class: 'full-width-picture-img full-width-picture-img-mobile' }"
+      sizes="900px"
       preload
      />
   </section>

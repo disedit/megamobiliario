@@ -46,8 +46,15 @@ function scrollPage () {
       <NuxtImg
         v-if="blok.background_image?.filename"
         :src="blok.background_image.filename"
-        :img-attrs="{ alt: blok.background_image.alt, class: 'hero-background-img' }"
+        :img-attrs="{ alt: blok.background_image.alt, class: 'hero-background-img hero-background-img-desktop' }"
         sizes="900px md:1300px xl:1750px"
+        preload
+      />
+      <NuxtImg
+        v-if="blok.background_image_sm?.filename"
+        :src="blok.background_image_sm.filename"
+        :img-attrs="{ alt: blok.background_image_sm.alt, class: 'hero-background-img hero-background-img-mobile' }"
+        sizes="900px"
         preload
       />
     </div>
@@ -125,6 +132,14 @@ function scrollPage () {
       object-fit: cover;
       object-position: var(--background-align, center);
     }
+
+    &-img-desktop {
+      display: block;
+    }
+
+    &-img-mobile {
+      display: none;
+    }
   }
 
   &-arrow {
@@ -164,6 +179,14 @@ function scrollPage () {
     &-background {
       :deep(img) {
         object-position: var(--background-align-mobile, center);
+      }
+
+      &-img-desktop {
+        display: none;
+      }
+
+      &-img-mobile {
+        display: block;
       }
     }
   }
