@@ -14,8 +14,31 @@ defineProps({ blok: Object })
       <Carousel
         :items-to-show="1"
         :wrap-around="!!blok.infinite"
-        :autoplay="blok.autoplay * 1000">
+        :autoplay="blok.autoplay * 1000"
+        :class="{ 'carousel-desktop': blok.pictures_sm.length > 0 }">
         <Slide v-for="picture in blok.pictures" :key="picture._uid">
+          <NuxtPicture
+            v-if="picture.filename"
+            format="avif,webp"
+            :src="picture.filename"
+            :img-attrs="{ alt: picture.alt, class: 'carousel__picture' }"
+            sizes="100vw md:750px lg:1200px"
+            preload
+          />
+        </Slide>
+
+        <template #addons>
+          <Navigation v-if="blok.show_nav_buttons" />
+          <Pagination v-if="blok.show_pagination" />
+        </template>
+      </Carousel>
+      <Carousel
+        v-if="blok.pictures_sm.length > 0"
+        :items-to-show="1"
+        :wrap-around="!!blok.infinite"
+        :autoplay="blok.autoplay * 1000"
+        class="carousel-mobile">
+        <Slide v-for="picture in blok.pictures_sm" :key="picture._uid">
           <NuxtPicture
             v-if="picture.filename"
             format="avif,webp"
@@ -70,6 +93,20 @@ defineProps({ blok: Object })
     left: 0;
     right: 0;
     padding: var(--site-padding);
+  }
+
+  &-mobile {
+    display: none;
+  }
+}
+
+@include media('<md') {
+  .carousel-desktop {
+    display: none;
+  }
+
+  .carousel-mobile {
+    display: block;
   }
 }
 

@@ -15,7 +15,7 @@ defineProps({ blok: Object })
       v-if="blok.picture?.filename"
       format="avif,webp"
       :src="blok.picture.filename"
-      :img-attrs="{ alt: blok.picture.alt, class: 'full-width-picture-img full-width-picture-img-desktop' }"
+      :img-attrs="{ alt: blok.picture.alt, class: blok.picture_sm?.filename ? 'full-width-picture-img full-width-picture-img-desktop' : 'full-width-picture-img' }"
       sizes="100vw md:750px lg:1200px"
       preload
      />

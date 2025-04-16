@@ -46,7 +46,7 @@ function scrollPage () {
       <NuxtImg
         v-if="blok.background_image?.filename"
         :src="blok.background_image.filename"
-        :img-attrs="{ alt: blok.background_image.alt, class: 'hero-background-img hero-background-img-desktop' }"
+        :img-attrs="{ alt: blok.background_image.alt, class: blok.background_image_sm?.filename ? 'hero-background-img hero-background-img-desktop' : 'hero-background-img' }"
         sizes="900px md:1300px xl:1750px"
         preload
       />
