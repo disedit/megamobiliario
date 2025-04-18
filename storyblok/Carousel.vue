@@ -15,7 +15,7 @@ defineProps({ blok: Object })
         :items-to-show="1"
         :wrap-around="!!blok.infinite"
         :autoplay="blok.autoplay * 1000"
-        :class="{ 'carousel-desktop': blok.pictures_sm.length > 0 }">
+        :class="{ 'carousel-desktop': blok.pictures_sm?.length > 0 }">
         <Slide v-for="picture in blok.pictures" :key="picture._uid">
           <NuxtPicture
             v-if="picture.filename"
@@ -33,7 +33,7 @@ defineProps({ blok: Object })
         </template>
       </Carousel>
       <Carousel
-        v-if="blok.pictures_sm.length > 0"
+        v-if="blok.pictures_sm?.length > 0"
         :items-to-show="1"
         :wrap-around="!!blok.infinite"
         :autoplay="blok.autoplay * 1000"
