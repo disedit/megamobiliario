@@ -94,3 +94,17 @@ a {
 .menu-open {
   overflow: hidden;
 }
+
+.picture-mobile {
+  display: none;
+}
+
+@include media('<md') {
+  .picture-desktop {
+    display: none !important;
+  }
+
+  .picture-mobile {
+    display: block !important;
+  }
+}

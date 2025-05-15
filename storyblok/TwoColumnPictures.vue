@@ -17,7 +17,15 @@
               format="avif,webp"
               :src="blok.left_column_picture.filename"
               sizes="100vw md:500px lg:900px"
-              :img-attrs="{ alt: blok.left_column_picture.alt }"
+              :img-attrs="{ alt: blok.left_column_picture.alt, class: blok.left_column_picture_sm?.filename ? 'picture-desktop' : '' }"
+              preload
+            />
+            <NuxtPicture
+              v-if="blok.left_column_picture_sm?.filename"
+              format="avif,webp"
+              :src="blok.left_column_picture_sm.filename"
+              sizes="100vw md:500px lg:900px"
+              :img-attrs="{ alt: blok.left_column_picture.alt, class: 'picture-mobile' }"
               preload
             />
           </div>
@@ -40,7 +48,15 @@
             <NuxtPicture
               format="avif,webp"
               :src="blok.right_column_picture.filename"
-              :img-attrs="{ alt: blok.right_column_picture.alt }"
+              :img-attrs="{ alt: blok.right_column_picture.alt, class: blok.right_column_picture_sm?.filename ? 'picture-desktop' : '' }"
+              sizes="100vw md:350px lg:500px"
+              preload
+            />
+            <NuxtPicture
+              v-if="blok.right_column_picture_sm?.filename"
+              format="avif,webp"
+              :src="blok.right_column_picture_sm.filename"
+              :img-attrs="{ alt: blok.right_column_picture.alt, class: 'picture-mobile' }"
               sizes="100vw md:350px lg:500px"
               preload
             />
