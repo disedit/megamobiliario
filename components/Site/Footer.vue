@@ -1,5 +1,6 @@
 <script setup>
 const config = useState('config')
+const localePath = useLocalePath()
 
 const legalNotice = computed(() => {
   const today = new Date()
