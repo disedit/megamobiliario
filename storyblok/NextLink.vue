@@ -10,7 +10,7 @@ const { internalLink } = useLinks()
 // The key must be the first element in slug
 const types = {
   nosotros: {
-    root: 'nosotros/novedades',
+    root: 'novedades',
     label: t('next.post'),
     slug: 2
   },
