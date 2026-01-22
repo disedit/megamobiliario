@@ -43,7 +43,7 @@ const type = computed(() => {
 const storyblokApi = useStoryblokApi()
 const { data } = await useAsyncData('next' + type.value.root, async () => await storyblokApi.get(`cdn/stories`, {
     starts_with: type.value.root + '/',
-    sort_by: 'post_date:desc,sort_by_date:desc,created_at:desc',
+    sort_by: 'content.post_date:desc,sort_by_date:desc,created_at:desc',
     excluding_fields: 'blocks,seo_title,seo_picture,seo_description,seo_keywords,light_nav,nav_color',
     is_startpage: 0,
     language: locale.value,
