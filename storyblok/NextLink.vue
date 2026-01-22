@@ -12,7 +12,7 @@ const types = {
   novedades: {
     root: 'novedades',
     label: t('next.post'),
-    slug: 2
+    slug: 1
   },
   colecciones: {
     root: 'colecciones',
