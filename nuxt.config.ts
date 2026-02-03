@@ -65,5 +65,9 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2024-07-31'
+  compatibilityDate: '2024-07-31',
+
+  experimental: {
+    payloadExtraction: true
+  }
 })

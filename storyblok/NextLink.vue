@@ -44,18 +44,25 @@ const storyblokApi = useStoryblokApi()
 const { data } = await useAsyncData('next' + type.value.root, async () => await storyblokApi.get(`cdn/stories`, {
     starts_with: type.value.root + '/',
     sort_by: 'content.post_date:desc,sort_by_date:desc,created_at:desc',
-    excluding_fields: 'blocks,seo_title,seo_picture,seo_description,seo_keywords,light_nav,nav_color',
+    excluding_fields: 'blocks,seo_title,seo_picture,seo_description,seo_keywords,light_nav,nav_color,post_thumbnail,post_thumbnail_hover,post_description,nav_color_mobile,post_title,title',
     is_startpage: 0,
     language: locale.value,
     version
-}))
-const orderedPages = data.value.data.stories
-const currentIndex = orderedPages.findIndex(page => slug[type.value.slug] === page.slug)
-const nextPage = computed(() => {
-  if (currentIndex + 1 >= orderedPages.length) {
-    return orderedPages[0]
+}), {
+  getCachedData: (key, nuxtApp, ctx) => {
+    const cachedOrderedPages = useState('orderedPages')
+    return cachedOrderedPages.value
+    ? cachedOrderedPages.value
+    : nuxtApp.payload.data[key]
   }
-  return orderedPages[currentIndex + 1]
+})
+const orderedPages = useState('orderedPages', () => data.value.data.stories)
+const currentIndex = orderedPages.value.findIndex(page => slug[type.value.slug] === page.slug)
+const nextPage = computed(() => {
+  if (currentIndex + 1 >= orderedPages.value.length) {
+    return orderedPages.value[0]
+  }
+  return orderedPages.value[currentIndex + 1]
 })
 
 const nextLink = computed(() => {
