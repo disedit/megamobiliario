@@ -60,7 +60,6 @@ onMounted(() => {
           :blok="picture"
           :arrow-on-hover="blok.arrow_on_hover"
           class="grid-item" />
-          {{ blok.arrow_on_hover }}
       </div>
     </div>
   </section>
